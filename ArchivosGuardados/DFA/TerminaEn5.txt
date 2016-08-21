@@ -1,0 +1,1 @@
+Estados:e1,e2$EstadosAceptacion:e2$EstadoInicial:e1$Alfabeto:4,5$AlfabetoGamma:$delta(e1,4)=e1$delta(e1,5)=e2$delta(e2,5)=e2$delta(e2,4)=e1$XsAndYs:delta_e1_e2,400.0,240.5#delta_e1_e1,110.0,160.0#delta_e2_e2,470.0,150.0#delta_e2_e1,170.0,350.5#e1,100.0,275.0#e2,450.0,270.0
