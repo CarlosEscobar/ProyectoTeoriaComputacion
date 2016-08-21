@@ -699,10 +699,6 @@ class AutomataOperationsAndActions{
 
         result.globalAlphabet = m.globalAlphabet
 
-        //Crear tabla
-
-
-
         return result
     }
 
