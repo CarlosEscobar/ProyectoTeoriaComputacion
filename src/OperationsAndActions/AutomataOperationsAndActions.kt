@@ -19,7 +19,7 @@ class AutomataOperationsAndActions{
         if((actionComboBox != null)){
             var todo = 0.0
             when (actionComboBox.selectedItem.toString()) {
-                " - Convertir DFA-ER" -> todo = 1.1
+                " - Convertir DFA-ER" -> actionConvert_DFA_ER(frame,c,panel,m)
                 " - Convertir NFA-DFA" -> actionConvert_NFA_DFA(frame,c,panel,m)
                 " - Convertir NFA-ER" -> todo = 1.2
                 " - Convertir NFAE-NFA" -> actionConvert_NFAE_NFA(frame,c,panel,m)
@@ -46,9 +46,6 @@ class AutomataOperationsAndActions{
 
         if(automataFromFileType.equals("ER")){
 
-            TabLogic.TabPanelLogic().clearAutomata(c,m)
-
-            m.globalAutomataType = "ER"
             val typeComboBox = MainUtility().getComponentByName<JComboBox<String>>(c, "t1TypesComboBox")
             if(typeComboBox != null){
                 typeComboBox.setSelectedItem("ER")
@@ -64,8 +61,6 @@ class AutomataOperationsAndActions{
             if(ERtextField != null) {
                 ERtextField.text = regularExpresionFromFile
             }
-
-
 
         } else {
             val automataFromFile = AutomataFilesUtility().readAutomataFile(automataAbsolutePath, automataFromFileType)
@@ -90,6 +85,25 @@ class AutomataOperationsAndActions{
         val transformedAutomataNFA = NFAE_To_NFA(automataFromFile)
         val transformedAutomataDFA = NFA_To_DFA(transformedAutomataNFA)
         MainUtility().renderAutomataWithoutXsAndYs(frame,c,panel,m,transformedAutomataDFA,m.globalChooser1.selectedFile.name.split('.').get(0)+"NFAE_DFA")
+    }
+
+    fun actionConvert_DFA_ER(frame: JFrame, c: Container, panel: JPanel, m: GlobalAutomata){
+        val typeComboBox = MainUtility().getComponentByName<JComboBox<String>>(c, "t1TypesComboBox")
+        if(typeComboBox != null){
+            typeComboBox.setSelectedItem("ER")
+        }
+
+        val automataNameTextBox = MainUtility().getComponentByName<JTextField>(c, "t1NameTextField")
+        if(automataNameTextBox != null){
+            automataNameTextBox.text = m.globalChooser1.selectedFile.name.split('.').get(0) + "_DFA_ER"
+        }
+
+        val automataFromFile = AutomataFilesUtility().readAutomataFile(m.globalChooser1.selectedFile.absolutePath, m.globalChooser1.selectedFile.parentFile.name)
+        val regularExpresionFromAutomata = DFA_To_ER(automataFromFile)
+        val ERtextField = MainUtility().getComponentByName<JTextField>(c, "t1ERTextField")
+        if(ERtextField != null) {
+            ERtextField.text = regularExpresionFromAutomata
+        }
     }
 
     fun actionUnion(frame: JFrame, c: Container, panel: JPanel, m: GlobalAutomata){
@@ -126,6 +140,26 @@ class AutomataOperationsAndActions{
     }
 
     // Logic for actions
+
+    fun DFA_To_ER(m: GlobalAutomata): String{
+        var result = ""
+
+        var acceptanceStatesExpresions = ArrayList<String>()
+
+
+
+
+
+
+
+
+
+
+
+
+
+        return result
+    }
 
     // Usa | para unir estados
     fun NFA_To_DFA(m: GlobalAutomata): GlobalAutomata{

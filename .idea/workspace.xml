@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ba42790-1cde-49af-ba44-fed6ddbdd284" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProyectoTeoriaComputacion/OperationsAndActions/AutomataOperationsAndActions.class" afterPath="$PROJECT_DIR$/out/production/ProyectoTeoriaComputacion/OperationsAndActions/AutomataOperationsAndActions.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OperationsAndActions/AutomataOperationsAndActions.kt" afterPath="$PROJECT_DIR$/src/OperationsAndActions/AutomataOperationsAndActions.kt" />
     </list>
@@ -23,34 +24,13 @@
     <favorites_list name="ProyectoTeoriaComputacion" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="GlobalAutomata.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GlobalAutomata.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="21" column="39" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file leaf-file-name="AutomataOperationsAndActions.kt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/OperationsAndActions/AutomataOperationsAndActions.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+            <state relative-caret-position="464">
+              <caret line="156" column="0" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
               <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <element signature="n#!!block;n#executeAction#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
-                <element signature="n#!!block;n#actionLoadAutomata#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
-                <element signature="n#!!block;n#actionConvert_NFA_DFA#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
-                <element signature="n#!!block;n#actionConvert_NFAE_NFA#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
-                <element signature="n#!!block;n#actionConvert_NFAE_DFA#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
-                <element signature="n#!!block;n#actionUnion#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
-                <element signature="n#!!block;n#actionIntersection#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
-                <element signature="n#!!block;n#actionDifference#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
-                <element signature="n#!!block;n#actionComplement#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
-                <element signature="n#!!block;n#actionMinimize#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
                 <element signature="n#!!block;n#NFA_To_DFA#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
                 <element signature="n#!!block;n#NFAE_To_NFA#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
                 <element signature="n#!!block;n#clausura#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
@@ -140,8 +120,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -194,7 +174,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -558,13 +538,12 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40724477" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41053787" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -575,6 +554,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41163558" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -621,7 +601,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="206" />
+      <option name="time" value="208" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -754,51 +734,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="142">
           <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
-          <folding>
-            <element signature="n#!!block;n#evaluateDFA#0;n#!!block;n#EvaluateAutomatas#0" expanded="false" />
-            <element signature="n#!!block;n#evaluateNFA#0;n#!!block;n#EvaluateAutomatas#0" expanded="false" />
-            <element signature="n#!!block;n#evaluateNFAE#0;n#!!block;n#EvaluateAutomatas#0" expanded="false" />
-            <element signature="n#!!block;n#evaluatePDA#0;n#!!block;n#EvaluateAutomatas#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TabPanel/TabPanelLogic.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!block;n#saveAutomata#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#setERLabelAndTextFieldVisibility#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#onChangeEventAutomataType#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#clearAutomata#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#addNewState#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#addNewStateCore#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#clearNewState#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#addCharacterToAlphabet#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#clearAlphabet#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#addCharacterToGammaAlphabet#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#clearGammaAlphabet#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#addTransition#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#addTransitionCore#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#getTransitionCharacterFromTuring#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#addTransitionDFA#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#composeDeltaDFA#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#addTransitionNFA#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#addTransitionNFAE#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#composeDeltaNFA_NFAE#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#addTransitionPDA#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#composeDeltaPDA#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#addTransitionTuring#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#composeDeltaTuring#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#clearAddTransition#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#chooseFile1#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#chooseFile2#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#executeAction#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#clearActions#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#evaluate#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#clearEvaluate#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -806,9 +741,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
           <caret line="49" column="48" selection-start-line="49" selection-start-column="48" selection-end-line="49" selection-end-column="48" />
-          <folding>
-            <element signature="n#!!block;n#renderAutomataWithoutXsAndYs#0;n#!!block;n#MainUtility#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -816,7 +748,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="422">
           <caret line="42" column="53" selection-start-line="42" selection-start-column="53" selection-end-line="42" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -838,7 +769,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TabPanel/TabPanelLogic.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="497">
+          <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -846,26 +783,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="21" column="39" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/OperationsAndActions/AutomataOperationsAndActions.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+        <state relative-caret-position="464">
+          <caret line="156" column="0" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="n#!!block;n#executeAction#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
-            <element signature="n#!!block;n#actionLoadAutomata#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
-            <element signature="n#!!block;n#actionConvert_NFA_DFA#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
-            <element signature="n#!!block;n#actionConvert_NFAE_NFA#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
-            <element signature="n#!!block;n#actionConvert_NFAE_DFA#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
-            <element signature="n#!!block;n#actionUnion#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
-            <element signature="n#!!block;n#actionIntersection#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
-            <element signature="n#!!block;n#actionDifference#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
-            <element signature="n#!!block;n#actionComplement#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
-            <element signature="n#!!block;n#actionMinimize#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
             <element signature="n#!!block;n#NFA_To_DFA#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
             <element signature="n#!!block;n#NFAE_To_NFA#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
             <element signature="n#!!block;n#clausura#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
