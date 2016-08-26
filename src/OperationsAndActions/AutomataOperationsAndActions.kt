@@ -696,12 +696,264 @@ class AutomataOperationsAndActions{
     // Usa . para unir estados
     fun minimizeAutomata(m: GlobalAutomata): GlobalAutomata{
         var result = GlobalAutomata()
-
         result.globalAlphabet = m.globalAlphabet
 
+        var AllStatePairsEvaluated = ArrayList<String>()
+        var AllStatePairsWithoutEvaluation = ArrayList<String>()
+
         //Crear tabla
+        var statePairs = ArrayList<String>()
+        var counter = 1
+        for(i in 1..(m.globalStates.size-1)){
+            for(j in 0..(counter-1)){
+                statePairs.add(m.globalStates.get(j)+"$"+m.globalStates.get(i))
+            }
+            counter++
+        }
+
+        //Caso base para todos
+        var isState1Acceptance:Boolean
+        var isState2Acceptance:Boolean
+        for(p in 0..(statePairs.size-1)){
+            var currentStatePair = statePairs.get(p).split('$')
+            isState1Acceptance = false
+            isState2Acceptance = false
+
+            for(k in 0..(m.globalAcceptanceStates.size-1)){
+                if(m.globalAcceptanceStates.get(k).equals(currentStatePair.get(0))){
+                    isState1Acceptance = true
+                }
+                if(m.globalAcceptanceStates.get(k).equals(currentStatePair.get(1))){
+                    isState2Acceptance = true
+                }
+                if(isState1Acceptance && isState2Acceptance){
+                    break
+                }
+            }
+
+            if((isState1Acceptance && (!isState2Acceptance)) || ((!isState1Acceptance) && isState2Acceptance)){
+                AllStatePairsWithoutEvaluation.add(currentStatePair.get(0)+"$"+currentStatePair.get(1))
+                AllStatePairsEvaluated.add(currentStatePair.get(0)+"$"+currentStatePair.get(1)+"$"+"X")
+            }
+        }
+
+        //Sacar parejas que no cumplieron el caso base
+        var statesToEvaluate = ArrayList<String>()
+        var isStatePairEvaluated:Boolean
+        for(i in 0..(statePairs.size-1)){
+            isStatePairEvaluated = false
+            for(j in 0..(AllStatePairsWithoutEvaluation.size-1)){
+                if(statePairs.get(i).equals(AllStatePairsWithoutEvaluation.get(j))){
+                    isStatePairEvaluated = true
+                    break
+                }
+            }
+
+            if(!isStatePairEvaluated){
+                statesToEvaluate.add(statePairs.get(i))
+            }
+        }
+
+        //Evaluar cada caracter del alfabeto por pareja y evaluar caso de no devolver nada
+        var theAlphabet = m.globalAlphabet.split(',')
+
+        var StatePairsAlphabetEvaluationPairs = ArrayList<String>()
+        var statePairAlphabetEvaluationToAdd: String
+
+        var wasCaseFound: Boolean
+        var tempStatesThatSatisfiedCase = ArrayList<String>()
+
+        var deltaResultState1: String
+        var deltaResultState2: String
+
+        for(i in 0..(statesToEvaluate.size-1)){
+            var currentStatePair = statesToEvaluate.get(i).split('$')
+            wasCaseFound = false
+            for(k in 0..(theAlphabet.size-1)){
+                if(!wasCaseFound) {
+
+                    deltaResultState1 = ""
+                    deltaResultState2 = ""
+
+                    for(d in 0..(m.globalDeltas.size-1)){
+                        val currentDelta = m.globalDeltas.get(d)
+                        val deltaData1 = currentDelta.split('(').get(1).split(')')
+                        val deltaData2 = deltaData1.get(0).split(',')
+                        val deltaData3 = deltaData1.get(1).split('=').get(1)
+
+                        if((deltaData2.get(0).equals(currentStatePair.get(0))) && (deltaData2.get(1).equals(theAlphabet.get(k)))){
+                            deltaResultState1 = deltaData3
+                        }
+
+                        if((deltaData2.get(0).equals(currentStatePair.get(1))) && (deltaData2.get(1).equals(theAlphabet.get(k)))){
+                            deltaResultState2 = deltaData3
+                        }
+
+                        if((deltaResultState1 != "") && (deltaResultState2 != "")){
+                            break
+                        }
+                    }
 
 
+                    if((deltaResultState1 == "") || (deltaResultState2 == "")){
+                        AllStatePairsWithoutEvaluation.add(currentStatePair.get(0)+"$"+currentStatePair.get(1))
+                        tempStatesThatSatisfiedCase.add(currentStatePair.get(0)+"$"+currentStatePair.get(1))
+                        AllStatePairsEvaluated.add(currentStatePair.get(0)+"$"+currentStatePair.get(1)+"$"+"X")
+                        wasCaseFound = true
+                    }
+
+                    if(!wasCaseFound) {
+                        statePairAlphabetEvaluationToAdd = currentStatePair.get(0) + "$" + currentStatePair.get(1) + "@" + theAlphabet.get(k) + "@" + deltaResultState1 + "$" + deltaResultState2
+                        StatePairsAlphabetEvaluationPairs.add(statePairAlphabetEvaluationToAdd)
+                    }
+                }
+            }
+        }
+
+        //Actualizar las parejas por evaluar, quitarles las que cumplieron el caso de no devolver nada
+        for(p in 0..(tempStatesThatSatisfiedCase.size-1)){
+            statesToEvaluate.remove(tempStatesThatSatisfiedCase.get(p))
+        }
+
+        //Buscar el caso de igualdad por devolver lo mismo en los estados por evaluar
+        val theAlphabetSize = theAlphabet.size
+        var stateSetReturnedTheSameCounter = 0
+        var tempStatesFoundForCase = ArrayList<String>()
+        var alphabetDeltaResultTemp: String
+
+        for(i in 0..(statesToEvaluate.size-1)){
+            var currentStatePair = statesToEvaluate.get(i).split('$')
+
+            stateSetReturnedTheSameCounter = 0
+            for(k in 0..(StatePairsAlphabetEvaluationPairs.size-1)){
+                if(StatePairsAlphabetEvaluationPairs.get(k).split('@').get(0).equals(statesToEvaluate.get(i))){
+                    alphabetDeltaResultTemp = StatePairsAlphabetEvaluationPairs.get(k).split('@').get(2)
+                    var deltaResult = alphabetDeltaResultTemp.split('$')
+
+                    if(deltaResult.get(0).equals(deltaResult.get(1))){
+                        stateSetReturnedTheSameCounter++
+                    }
+                }
+            }
+
+            if(stateSetReturnedTheSameCounter == theAlphabetSize){
+                AllStatePairsWithoutEvaluation.add(currentStatePair.get(0)+"$"+currentStatePair.get(1))
+                tempStatesFoundForCase.add(currentStatePair.get(0)+"$"+currentStatePair.get(1))
+                AllStatePairsEvaluated.add(currentStatePair.get(0)+"$"+currentStatePair.get(1)+"$"+"J")
+            }
+        }
+
+        //Actualizar las parejas por evaluar, quitarles las que cumplieron el caso de todos caracteres devuelven lo mismo en la pareja
+        var tempAlphabetEvaluations = ArrayList<String>()
+        for(p in 0..(tempStatesFoundForCase.size-1)){
+            statesToEvaluate.remove(tempStatesFoundForCase.get(p))
+
+            for(k in 0..(StatePairsAlphabetEvaluationPairs.size-1)){
+                if(StatePairsAlphabetEvaluationPairs.get(k).split('@').get(0).equals(tempStatesFoundForCase.get(p))){
+                    tempAlphabetEvaluations.add(StatePairsAlphabetEvaluationPairs.get(k))
+                }
+            }
+        }
+
+        for(p in 0..(tempAlphabetEvaluations.size-1)){
+            StatePairsAlphabetEvaluationPairs.remove(tempAlphabetEvaluations.get(p))
+        }
+
+        //Ciclo hasta evaluar todas las parejas
+        var counterPerPairEquivalent = 0
+        var counterPerPairNotEquivalent = 0
+        var isCurrentPairEquivalent: Boolean?
+
+        while(AllStatePairsEvaluated.size != statePairs.size){
+
+            var possibleStates = statesToEvaluate.subtract(AllStatePairsWithoutEvaluation).toList()
+
+            for(i in 0..(possibleStates.size-1)){
+
+                counterPerPairEquivalent = 0
+                counterPerPairNotEquivalent = 0
+
+                for(j in 0..(StatePairsAlphabetEvaluationPairs.size-1)){
+                    if(StatePairsAlphabetEvaluationPairs.get(j).split('@').get(0).equals(possibleStates.get(i))){
+                        var curStatePairAlphabet = StatePairsAlphabetEvaluationPairs.get(j).split('@').get(2)
+                        var temp = curStatePairAlphabet.split('$')
+                        var curStatePairAlphabet2 = temp.get(1)+"$"+temp.get(0)
+
+                        isCurrentPairEquivalent = null
+
+                        if(temp.get(0).equals(temp.get(1))){
+                            isCurrentPairEquivalent = true
+                        }
+
+                        if(isCurrentPairEquivalent == null) {
+                            for (k in 0..(AllStatePairsEvaluated.size - 1)) {
+
+                                if (AllStatePairsEvaluated.get(k).contains(curStatePairAlphabet)) {
+                                    if (AllStatePairsEvaluated.get(k).split('$').get(2).equals("J")) {
+                                        isCurrentPairEquivalent = true
+                                    }
+
+                                    if (AllStatePairsEvaluated.get(k).split('$').get(2).equals("X")) {
+                                        isCurrentPairEquivalent = false
+                                    }
+                                }
+
+                                if (AllStatePairsEvaluated.get(k).contains(curStatePairAlphabet2)) {
+                                    if (AllStatePairsEvaluated.get(k).split('$').get(2).equals("J")) {
+                                        isCurrentPairEquivalent = true
+                                    }
+
+                                    if (AllStatePairsEvaluated.get(k).split('$').get(2).equals("X")) {
+                                        isCurrentPairEquivalent = false
+                                    }
+                                }
+                            }
+                        }
+
+                        if(isCurrentPairEquivalent != null){
+                            if(isCurrentPairEquivalent){
+                                counterPerPairEquivalent++
+                            } else {
+                                counterPerPairNotEquivalent++
+                            }
+                        }
+                    }
+                }
+
+                if(counterPerPairNotEquivalent > 0){
+                    var stateAlreadyAdded = false
+                    for(e in 0..(AllStatePairsWithoutEvaluation.size-1)){
+                        if(AllStatePairsWithoutEvaluation.get(e).equals(possibleStates.get(i))){
+                            stateAlreadyAdded = true
+                        }
+                    }
+
+                    if(!stateAlreadyAdded) {
+                        AllStatePairsWithoutEvaluation.add(possibleStates.get(i))
+                        AllStatePairsEvaluated.add(possibleStates.get(i) + "$" + "X")
+                    }
+                }
+
+                if(counterPerPairEquivalent == theAlphabetSize){
+                    var stateAlreadyAdded = false
+                    for(e in 0..(AllStatePairsWithoutEvaluation.size-1)){
+                        if(AllStatePairsWithoutEvaluation.get(e).equals(possibleStates.get(i))){
+                            stateAlreadyAdded = true
+                        }
+                    }
+
+                    if(!stateAlreadyAdded){
+                        AllStatePairsWithoutEvaluation.add(possibleStates.get(i))
+                        AllStatePairsEvaluated.add(possibleStates.get(i)+"$"+"J")
+                    }
+                }
+            }
+        }
+
+        //tabla evaluada completamente
+        for(l in 0..(AllStatePairsEvaluated.size-1)){
+            println(AllStatePairsEvaluated.get(l))
+        }
 
         return result
     }
