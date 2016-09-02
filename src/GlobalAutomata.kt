@@ -32,5 +32,17 @@ class GlobalAutomata {
 fun main(args: Array<String>) {
     var globalAutomata = GlobalAutomata()
     MainUtility().renderMainFunction(globalAutomata)
+
+    /*
+    var s = "0110"
+    println(s.get(0))
+    println(s.substring(1,s.length))
+    println("//")
+    var p = "Z01"
+    println(p + "2")
+    println(p.substring(0,p.length-1))
+*/
+
+
 }
 
