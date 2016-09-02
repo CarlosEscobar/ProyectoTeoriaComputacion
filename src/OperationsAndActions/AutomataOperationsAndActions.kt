@@ -509,12 +509,14 @@ class AutomataOperationsAndActions{
                 var newPossibleState = ""
                 for(a in 0..(newAlphabetCharacters.size-1)){
                     newPossibleState = ""
+                    var foundDeltaInAutomata1 = false
                     if(considerAutomata1ToProcess){
                         for(d in 0..(automata1.globalDeltas.size-1)){
                             var deltaData1 = automata1.globalDeltas.get(d).split('(').get(1).split('=')
                             var deltaData2 = deltaData1.get(0).split(')').get(0).split(',')
                             if((deltaData2.get(0).equals(automata1State)) && (deltaData2.get(1).equals(newAlphabetCharacters.get(a)))){
                                 newPossibleState = deltaData1.get(1)
+                                foundDeltaInAutomata1 = true
                                 break
                             }
                         }
@@ -524,7 +526,7 @@ class AutomataOperationsAndActions{
                             var deltaData1 = automata2.globalDeltas.get(d).split('(').get(1).split('=')
                             var deltaData2 = deltaData1.get(0).split(')').get(0).split(',')
                             if((deltaData2.get(0).equals(automata2State)) && (deltaData2.get(1).equals(newAlphabetCharacters.get(a)))){
-                                if(considerAutomata1ToProcess){
+                                if(considerAutomata1ToProcess && foundDeltaInAutomata1){
                                     newPossibleState = newPossibleState + "." + deltaData1.get(1)
                                 } else {
                                     newPossibleState = deltaData1.get(1)
@@ -788,12 +790,7 @@ class AutomataOperationsAndActions{
                         if((deltaData2.get(0).equals(currentStatePair.get(1))) && (deltaData2.get(1).equals(theAlphabet.get(k)))){
                             deltaResultState2 = deltaData3
                         }
-
-                        if((deltaResultState1 != "") && (deltaResultState2 != "")){
-                            break
-                        }
                     }
-
 
                     if((deltaResultState1 == "") || (deltaResultState2 == "")){
                         AllStatePairsWithoutEvaluation.add(currentStatePair.get(0)+"$"+currentStatePair.get(1))
@@ -863,11 +860,12 @@ class AutomataOperationsAndActions{
         var counterPerPairEquivalent = 0
         var counterPerPairNotEquivalent = 0
         var isCurrentPairEquivalent: Boolean?
+        var atLeastOneFound = true
 
-        while(AllStatePairsEvaluated.size != statePairs.size){
+        while((AllStatePairsEvaluated.size != statePairs.size) && (atLeastOneFound)){
 
             var possibleStates = statesToEvaluate.subtract(AllStatePairsWithoutEvaluation).toList()
-
+            atLeastOneFound = false
             for(i in 0..(possibleStates.size-1)){
 
                 counterPerPairEquivalent = 0
@@ -921,39 +919,40 @@ class AutomataOperationsAndActions{
                 }
 
                 if(counterPerPairNotEquivalent > 0){
-                    var stateAlreadyAdded = false
-                    for(e in 0..(AllStatePairsWithoutEvaluation.size-1)){
-                        if(AllStatePairsWithoutEvaluation.get(e).equals(possibleStates.get(i))){
-                            stateAlreadyAdded = true
-                        }
-                    }
-
-                    if(!stateAlreadyAdded) {
-                        AllStatePairsWithoutEvaluation.add(possibleStates.get(i))
-                        AllStatePairsEvaluated.add(possibleStates.get(i) + "$" + "X")
-                    }
+                    atLeastOneFound = true
+                    AllStatePairsWithoutEvaluation.add(possibleStates.get(i))
+                    AllStatePairsEvaluated.add(possibleStates.get(i) + "$" + "X")
                 }
 
                 if(counterPerPairEquivalent == theAlphabetSize){
-                    var stateAlreadyAdded = false
-                    for(e in 0..(AllStatePairsWithoutEvaluation.size-1)){
-                        if(AllStatePairsWithoutEvaluation.get(e).equals(possibleStates.get(i))){
-                            stateAlreadyAdded = true
-                        }
-                    }
-
-                    if(!stateAlreadyAdded){
-                        AllStatePairsWithoutEvaluation.add(possibleStates.get(i))
-                        AllStatePairsEvaluated.add(possibleStates.get(i)+"$"+"J")
-                    }
+                    atLeastOneFound = true
+                    AllStatePairsWithoutEvaluation.add(possibleStates.get(i))
+                    AllStatePairsEvaluated.add(possibleStates.get(i)+"$"+"J")
                 }
             }
         }
 
         //tabla evaluada completamente
+
         for(l in 0..(AllStatePairsEvaluated.size-1)){
             println(AllStatePairsEvaluated.get(l))
         }
+
+        return result
+    }
+
+    fun findPossiblePaths(m: GlobalAutomata, initialState: String, finalState: String): ArrayList<String>{
+        var result = ArrayList<String>()
+
+        var tempData = ArrayList<String>()
+        tempData.add(initialState)
+
+        val worstCaseLength = m.globalStates.size * 2
+        for(i in 1..(worstCaseLength)){
+
+        }
+
+
 
         return result
     }

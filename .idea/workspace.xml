@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ba42790-1cde-49af-ba44-fed6ddbdd284" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProyectoTeoriaComputacion/OperationsAndActions/AutomataOperationsAndActions.class" afterPath="$PROJECT_DIR$/out/production/ProyectoTeoriaComputacion/OperationsAndActions/AutomataOperationsAndActions.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProyectoTeoriaComputacion/TheGlobalAutomata/GlobalAutomataKt.class" afterPath="$PROJECT_DIR$/out/production/ProyectoTeoriaComputacion/TheGlobalAutomata/GlobalAutomataKt.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GlobalAutomata.kt" afterPath="$PROJECT_DIR$/src/GlobalAutomata.kt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OperationsAndActions/AutomataOperationsAndActions.kt" afterPath="$PROJECT_DIR$/src/OperationsAndActions/AutomataOperationsAndActions.kt" />
     </list>
     <ignored path="ProyectoTeoriaComputacion.iws" />
@@ -28,44 +29,31 @@
     <favorites_list name="ProyectoTeoriaComputacion" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file leaf-file-name="AutomataOperationsAndActions.kt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/OperationsAndActions/AutomataOperationsAndActions.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="956" column="0" selection-start-line="956" selection-start-column="0" selection-end-line="956" selection-end-column="0" />
+            <state relative-caret-position="702">
+              <caret line="957" column="5" selection-start-line="957" selection-start-column="5" selection-end-line="957" selection-end-column="5" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#82#224#0" expanded="true" />
+                <element signature="n#!!block;n#executeAction#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+                <element signature="n#!!block;n#actionLoadAutomata#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+                <element signature="n#!!block;n#actionConvert_NFA_DFA#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+                <element signature="n#!!block;n#actionConvert_NFAE_NFA#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+                <element signature="n#!!block;n#actionConvert_NFAE_DFA#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
                 <element signature="n#!!block;n#actionUnion#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
                 <element signature="n#!!block;n#actionIntersection#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
                 <element signature="n#!!block;n#actionDifference#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+                <element signature="n#!!block;n#actionComplement#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+                <element signature="n#!!block;n#actionMinimize#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
                 <element signature="n#!!block;n#NFA_To_DFA#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
                 <element signature="n#!!block;n#NFAE_To_NFA#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
                 <element signature="n#!!block;n#clausura#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
                 <element signature="n#!!block;n#operateTwoAutomatas#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
                 <element signature="n#!!block;n#complementAutomata#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
-                <marker date="1472190765701" expanded="false" signature="347:1691" ph="{...}" />
-                <marker date="1472190765701" expanded="false" signature="1782:3108" ph="{...}" />
-                <marker date="1472190765701" expanded="false" signature="3202:3586" ph="{...}" />
-                <marker date="1472190765701" expanded="false" signature="3681:4066" ph="{...}" />
-                <marker date="1472190765701" expanded="false" signature="4161:4624" ph="{...}" />
-                <marker date="1472190765701" expanded="false" signature="6890:7287" ph="{...}" />
-                <marker date="1472190765701" expanded="false" signature="7374:7756" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EvaluateAutomatas.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Evaluation/EvaluateAutomatas.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="51" column="20" selection-start-line="51" selection-start-column="20" selection-end-line="54" selection-end-column="72" />
-              <folding>
-                <element signature="n#!!block;n#evaluateNFA#0;n#!!block;n#EvaluateAutomatas#0" expanded="false" />
-                <element signature="n#!!block;n#evaluateNFAE#0;n#!!block;n#EvaluateAutomatas#0" expanded="false" />
-                <element signature="n#!!block;n#evaluatePDA#0;n#!!block;n#EvaluateAutomatas#0" expanded="false" />
+                <element signature="n#!!block;n#minimizeAutomata#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -74,8 +62,8 @@
       <file leaf-file-name="GlobalAutomata.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GlobalAutomata.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
+            <state relative-caret-position="682">
+              <caret line="37" column="24" selection-start-line="37" selection-start-column="24" selection-end-line="37" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -160,7 +148,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -212,26 +199,9 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProyectoTeoriaComputacion" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProyectoTeoriaComputacion" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Evaluation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -591,32 +561,32 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16245884" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22283205" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.184375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.184375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.298573" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21953897" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -659,7 +629,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="216" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/OperationsAndActions/AutomataOperationsAndActions.kt</url>
+          <line>936</line>
+          <properties />
+          <option name="timeStamp" value="216" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="229" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JetRunConfigurationType">
@@ -771,18 +749,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MainWindow.kt" />
     <entry file="file://$PROJECT_DIR$/ArchivosGuardados/DFA/EndsIn0.DFA.txt" />
-    <entry file="jar://$USER_HOME$/Downloads/jgraphx-3.4.1.3.jar!/com/mxgraph/view/mxGraph.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="127" column="0" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DeltaPanel/DeltaPanelLogic.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -790,7 +760,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
           <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -837,9 +806,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
           <caret line="49" column="48" selection-start-line="49" selection-start-column="48" selection-end-line="49" selection-end-column="48" />
-          <folding>
-            <element signature="n#!!block;n#renderAutomataWithoutXsAndYs#0;n#!!block;n#MainUtility#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -847,7 +813,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="422">
           <caret line="42" column="53" selection-start-line="42" selection-start-column="53" selection-end-line="42" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -855,18 +820,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="229">
           <caret line="124" column="19" selection-start-line="124" selection-start-column="19" selection-end-line="124" selection-end-column="19" />
-          <folding>
-            <element signature="e#74#233#0" expanded="true" />
-            <element signature="n#!!block;n#writeAutomataFile#0;n#!!block;n#AutomataFilesUtility#0" expanded="false" />
-            <element signature="n#!!block;n#readFile#0;n#!!block;n#AutomataFilesUtility#0" expanded="false" />
-            <element signature="n#!!block;n#readAutomataFile#0;n#!!block;n#AutomataFilesUtility#0" expanded="false" />
-            <element signature="n#!!block;n#setStates#0;n#!!block;n#AutomataFilesUtility#0" expanded="false" />
-            <element signature="n#!!block;n#setAcceptanceStates#0;n#!!block;n#AutomataFilesUtility#0" expanded="false" />
-            <element signature="n#!!block;n#setInitialState#0;n#!!block;n#AutomataFilesUtility#0" expanded="false" />
-            <element signature="n#!!block;n#setAlphabet#0;n#!!block;n#AutomataFilesUtility#0" expanded="false" />
-            <element signature="n#!!block;n#setGammaAlphabet#0;n#!!block;n#AutomataFilesUtility#0" expanded="false" />
-            <element signature="n#!!block;n#setXsAndYs#0;n#!!block;n#AutomataFilesUtility#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -874,24 +827,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="616">
           <caret line="444" column="36" selection-start-line="444" selection-start-column="36" selection-end-line="444" selection-end-column="36" />
-          <folding>
-            <element signature="e#73#208#0" expanded="false" />
-            <element signature="n#!!block;n#renderTab1#0;n#!!block;n#TabPanelRenderer#0" expanded="false" />
-            <element signature="n#!!block;n#renderTab2#0;n#!!block;n#TabPanelRenderer#0" expanded="false" />
-            <element signature="n#!!block;n#renderTab3#0;n#!!block;n#TabPanelRenderer#0" expanded="false" />
-            <element signature="n#!!block;n#renderTab4#0;n#!!block;n#TabPanelRenderer#0" expanded="false" />
-            <element signature="n#!!block;n#renderTab5#0;n#!!block;n#TabPanelRenderer#0" expanded="false" />
-            <element signature="n#!!block;n#renderTab6#0;n#!!block;n#TabPanelRenderer#0" expanded="false" />
-            <element signature="n#!!block;n#renderTab7#0;n#!!block;n#TabPanelRenderer#0" expanded="false" />
-            <element signature="n#!!block;n#renderTab8#0;n#!!block;n#TabPanelRenderer#0" expanded="false" />
-            <element signature="n#!!block;n#renderTabPane#0;n#!!block;n#TabPanelRenderer#0" expanded="false" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/src.zip!/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="459" column="0" selection-start-line="459" selection-start-column="0" selection-end-line="459" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Evaluation/EvaluateAutomatas.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
+        <state relative-caret-position="834">
           <caret line="51" column="20" selection-start-line="51" selection-start-column="20" selection-end-line="54" selection-end-column="72" />
           <folding>
             <element signature="n#!!block;n#evaluateNFA#0;n#!!block;n#EvaluateAutomatas#0" expanded="false" />
@@ -901,47 +849,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GlobalAutomata.kt">
+    <entry file="jar://$USER_HOME$/Downloads/jgraphx-3.4.1.3.jar!/com/mxgraph/view/mxGraph.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
-          <folding />
+        <state relative-caret-position="116">
+          <caret line="138" column="11" selection-start-line="138" selection-start-column="11" selection-end-line="138" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/src.zip!/java/util/ArrayList.java">
+    <entry file="file://$PROJECT_DIR$/src/GlobalAutomata.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="459" column="0" selection-start-line="459" selection-start-column="0" selection-end-line="459" selection-end-column="0" />
-          <folding>
-            <element signature="e#15414#15415#0" expanded="true" />
-            <element signature="e#15459#15460#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="682">
+          <caret line="37" column="24" selection-start-line="37" selection-start-column="24" selection-end-line="37" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/OperationsAndActions/AutomataOperationsAndActions.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="956" column="0" selection-start-line="956" selection-start-column="0" selection-end-line="956" selection-end-column="0" />
+        <state relative-caret-position="702">
+          <caret line="957" column="5" selection-start-line="957" selection-start-column="5" selection-end-line="957" selection-end-column="5" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#82#224#0" expanded="true" />
+            <element signature="n#!!block;n#executeAction#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+            <element signature="n#!!block;n#actionLoadAutomata#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+            <element signature="n#!!block;n#actionConvert_NFA_DFA#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+            <element signature="n#!!block;n#actionConvert_NFAE_NFA#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+            <element signature="n#!!block;n#actionConvert_NFAE_DFA#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
             <element signature="n#!!block;n#actionUnion#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
             <element signature="n#!!block;n#actionIntersection#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
             <element signature="n#!!block;n#actionDifference#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+            <element signature="n#!!block;n#actionComplement#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+            <element signature="n#!!block;n#actionMinimize#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
             <element signature="n#!!block;n#NFA_To_DFA#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
             <element signature="n#!!block;n#NFAE_To_NFA#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
             <element signature="n#!!block;n#clausura#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
             <element signature="n#!!block;n#operateTwoAutomatas#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
             <element signature="n#!!block;n#complementAutomata#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
-            <marker date="1472190765701" expanded="false" signature="347:1691" ph="{...}" />
-            <marker date="1472190765701" expanded="false" signature="1782:3108" ph="{...}" />
-            <marker date="1472190765701" expanded="false" signature="3202:3586" ph="{...}" />
-            <marker date="1472190765701" expanded="false" signature="3681:4066" ph="{...}" />
-            <marker date="1472190765701" expanded="false" signature="4161:4624" ph="{...}" />
-            <marker date="1472190765701" expanded="false" signature="6890:7287" ph="{...}" />
-            <marker date="1472190765701" expanded="false" signature="7374:7756" ph="{...}" />
+            <element signature="n#!!block;n#minimizeAutomata#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
           </folding>
         </state>
       </provider>
