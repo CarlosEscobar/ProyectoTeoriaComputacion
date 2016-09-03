@@ -89,6 +89,135 @@ class EvaluateAutomatas{
 
     fun evaluatePDA(wToEvaluate: String, m: GlobalAutomata): Boolean{
         var result = false
+
+        var wToEval = wToEvaluate
+        if(wToEval==""){
+            wToEval = "E"
+        }
+
+        var leafNodes = ArrayList<String>()
+
+        var firstStateToProcess = m.globalInitialState+"@"+wToEval+"@"+m.globalInitialStatePile
+        var statesToProcess = ArrayList<String>()
+        var tempStatesToProcess = ArrayList<String>()
+        statesToProcess.add(firstStateToProcess)
+        tempStatesToProcess.add("dummy")
+
+        var deltaToSearch1 = ""
+        var deltaResult1 = ""
+
+        var deltaResult2 = ""
+        var deltaToSearch2 = ""
+
+        var newState = ""
+        var tempW = ""
+        var newW = ""
+        var deltaResultPilePart = ""
+        var newPile = ""
+
+        while(tempStatesToProcess.size > 0){
+
+            tempStatesToProcess.clear()
+
+            for(i in 0..(statesToProcess.size-1)){
+
+                var currentStateParts = statesToProcess.get(i).split('@')
+
+                if(!currentStateParts.get(1).equals("E")){
+                    deltaToSearch1 = "delta("+currentStateParts.get(0)+","+currentStateParts.get(1).get(0)+","+currentStateParts.get(2).get(currentStateParts.get(2).length-1)+")"
+                    deltaToSearch2 = "delta("+currentStateParts.get(0)+",E,"+currentStateParts.get(2).get(currentStateParts.get(2).length-1)+")"
+                } else {
+                    deltaToSearch1 = "@dummy"
+                    deltaToSearch2 = "delta("+currentStateParts.get(0)+",E,"+currentStateParts.get(2).get(currentStateParts.get(2).length-1)+")"
+                }
+
+                deltaResult1 = ""
+                deltaResult2 = ""
+                for(d in 0..(m.globalDeltas.size-1)){
+                    if(m.globalDeltas.get(d).contains(deltaToSearch1)){
+                        deltaResult1 = m.globalDeltas.get(d).split('=').get(1)
+                    }
+                    if(m.globalDeltas.get(d).contains(deltaToSearch2)){
+                        deltaResult2 = m.globalDeltas.get(d).split('=').get(1)
+                    }
+                }
+
+                if(deltaResult1.equals("") && deltaResult2.equals("")){
+                    leafNodes.add(statesToProcess.get(i))
+                } else {
+
+                    //ver deltaResult1
+                    if(!deltaResult1.equals("")){
+
+                        newState = deltaResult1.split('(').get(1).split(',').get(0)
+
+                        tempW = currentStateParts.get(1)
+                        newW = tempW.substring(1,tempW.length)
+                        if(newW.length==0){
+                            newW="E"
+                        }
+
+                        //La pila queda igual
+                        newPile = currentStateParts.get(2)
+
+                        deltaResultPilePart = deltaResult1.split(',').get(1).split(')').get(0)
+
+                        //Pop
+                        if(deltaResultPilePart.equals("E")){
+                            newPile = currentStateParts.get(2).substring(0,currentStateParts.get(2).length-1)
+                        }
+                        //Push
+                        if(deltaResultPilePart.length>1){
+                            newPile = currentStateParts.get(2) + deltaResultPilePart.get(0)
+                        }
+                        tempStatesToProcess.add(newState+"@"+newW+"@"+newPile)
+                    }
+
+                    if(!deltaResult2.equals("")){
+                        newState = deltaResult2.split('(').get(1).split(',').get(0)
+
+                        newW = currentStateParts.get(1)
+
+                        //La pila queda igual
+                        newPile = currentStateParts.get(2)
+
+                        deltaResultPilePart = deltaResult2.split(',').get(1).split(')').get(0)
+
+                        //Pop
+                        if(deltaResultPilePart.equals("E")){
+                            newPile = currentStateParts.get(2).substring(0,currentStateParts.get(2).length-1)
+                        }
+                        //Push
+                        if(deltaResultPilePart.length>1){
+                            newPile = currentStateParts.get(2) + deltaResultPilePart.get(0)
+                        }
+                        tempStatesToProcess.add(newState+"@"+newW+"@"+newPile)
+                    }
+                }
+            }
+            statesToProcess.clear()
+            for(k in 0..(tempStatesToProcess.size-1)){
+                statesToProcess.add(tempStatesToProcess.get(k))
+            }
+        }
+
+        var isCurrentStateAcceptance = false
+        for(r in 0..(leafNodes.size-1)){
+            var currentNode = leafNodes.get(r).split('@')
+
+            isCurrentStateAcceptance = false
+            for(a in 0..(m.globalAcceptanceStates.size-1)){
+                if(m.globalAcceptanceStates.get(a).equals(currentNode.get(0))){
+                    isCurrentStateAcceptance = true
+                }
+            }
+
+            if(isCurrentStateAcceptance && currentNode.get(1).equals("E")){
+                result = true
+                break
+            }
+        }
+
         return result
     }
 
