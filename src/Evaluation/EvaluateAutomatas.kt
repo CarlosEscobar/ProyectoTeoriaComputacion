@@ -101,6 +101,7 @@ class EvaluateAutomatas{
         var statesToProcess = ArrayList<String>()
         var tempStatesToProcess = ArrayList<String>()
         statesToProcess.add(firstStateToProcess)
+        tempStatesToProcess.add("dummy")
 
         var deltaToSearch1 = ""
         var deltaResult1 = ""
@@ -114,7 +115,7 @@ class EvaluateAutomatas{
         var deltaResultPilePart = ""
         var newPile = ""
 
-        while(statesToProcess.size > 0){
+        while(tempStatesToProcess.size > 0){
 
             tempStatesToProcess.clear()
 
@@ -123,11 +124,11 @@ class EvaluateAutomatas{
                 var currentStateParts = statesToProcess.get(i).split('@')
 
                 if(!currentStateParts.get(1).equals("E")){
-                    deltaToSearch1 = "delta("+currentStateParts.get(0)+","+currentStateParts.get(1).get(0)+","+currentStateParts.get(2)+")"
-                    deltaToSearch2 = "delta("+currentStateParts.get(0)+",E,"+currentStateParts.get(2)+")"
+                    deltaToSearch1 = "delta("+currentStateParts.get(0)+","+currentStateParts.get(1).get(0)+","+currentStateParts.get(2).get(currentStateParts.get(2).length-1)+")"
+                    deltaToSearch2 = "delta("+currentStateParts.get(0)+",E,"+currentStateParts.get(2).get(currentStateParts.get(2).length-1)+")"
                 } else {
-                    deltaToSearch1 = ""
-                    deltaToSearch2 = "delta("+currentStateParts.get(0)+",E,"+currentStateParts.get(2)+")"
+                    deltaToSearch1 = "@dummy"
+                    deltaToSearch2 = "delta("+currentStateParts.get(0)+",E,"+currentStateParts.get(2).get(currentStateParts.get(2).length-1)+")"
                 }
 
                 deltaResult1 = ""
@@ -152,7 +153,7 @@ class EvaluateAutomatas{
 
                         tempW = currentStateParts.get(1)
                         newW = tempW.substring(1,tempW.length)
-                        if(tempW.length==1){
+                        if(newW.length==0){
                             newW="E"
                         }
 
@@ -173,14 +174,14 @@ class EvaluateAutomatas{
                     }
 
                     if(!deltaResult2.equals("")){
-                        newState = deltaResult1.split('(').get(1).split(',').get(0)
+                        newState = deltaResult2.split('(').get(1).split(',').get(0)
 
                         newW = currentStateParts.get(1)
 
                         //La pila queda igual
                         newPile = currentStateParts.get(2)
 
-                        deltaResultPilePart = deltaResult1.split(',').get(1).split(')').get(0)
+                        deltaResultPilePart = deltaResult2.split(',').get(1).split(')').get(0)
 
                         //Pop
                         if(deltaResultPilePart.equals("E")){
