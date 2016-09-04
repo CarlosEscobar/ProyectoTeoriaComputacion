@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ba42790-1cde-49af-ba44-fed6ddbdd284" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Evaluation/EvaluateAutomatas.kt" afterPath="$PROJECT_DIR$/src/Evaluation/EvaluateAutomatas.kt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProyectoTeoriaComputacion/OperationsAndActions/AutomataOperationsAndActions.class" afterPath="$PROJECT_DIR$/out/production/ProyectoTeoriaComputacion/OperationsAndActions/AutomataOperationsAndActions.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProyectoTeoriaComputacion/TheGlobalAutomata/GlobalAutomataKt.class" afterPath="$PROJECT_DIR$/out/production/ProyectoTeoriaComputacion/TheGlobalAutomata/GlobalAutomataKt.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -106,13 +107,15 @@
         <option value="$PROJECT_DIR$/src/DeltaPanel/DeltaPanelRenderer.kt" />
         <option value="$PROJECT_DIR$/ArchivosGuardados/DFA/EndsIn0.DFA.txt" />
         <option value="$PROJECT_DIR$/src/Utilities/AutomataGraphUtility.kt" />
-        <option value="$PROJECT_DIR$/src/Evaluation/EvaluateAutomatas.kt" />
         <option value="$PROJECT_DIR$/src/Utilities/MainUtility.kt" />
-        <option value="$PROJECT_DIR$/src/Utilities/AutomataFilesUtility.kt" />
         <option value="$PROJECT_DIR$/src/TabPanel/TabPanelLogic.kt" />
         <option value="$PROJECT_DIR$/src/TabPanel/TabPanelRenderer.kt" />
         <option value="$PROJECT_DIR$/src/GlobalAutomata.kt" />
+        <option value="$PROJECT_DIR$/src/Utilities/AutomataFilesUtility.kt" />
+        <option value="$PROJECT_DIR$/src/TabPanel/TabPanelRenderer.kt" />
+        <option value="$PROJECT_DIR$/src/GlobalAutomata.kt" />
         <option value="$PROJECT_DIR$/src/OperationsAndActions/AutomataOperationsAndActions.kt" />
+        <option value="$PROJECT_DIR$/src/Evaluation/EvaluateAutomatas.kt" />
       </list>
     </option>
   </component>
@@ -749,6 +752,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MainWindow.kt" />
     <entry file="file://$PROJECT_DIR$/ArchivosGuardados/DFA/EndsIn0.DFA.txt" />
+    <entry file="jar://$USER_HOME$/Downloads/jgraphx-3.4.1.3.jar!/com/mxgraph/view/mxGraph.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="127" column="0" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/DeltaPanel/DeltaPanelLogic.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -763,52 +773,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TabPanel/TabPanelLogic.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!block;n#saveAutomata#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#setERLabelAndTextFieldVisibility#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#onChangeEventAutomataType#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#clearAutomata#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#addNewState#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#addNewStateCore#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#clearNewState#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#addCharacterToAlphabet#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#clearAlphabet#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#addCharacterToGammaAlphabet#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#clearGammaAlphabet#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#addTransition#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#addTransitionCore#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#getTransitionCharacterFromTuring#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#addTransitionDFA#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#composeDeltaDFA#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#addTransitionNFA#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#addTransitionNFAE#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#composeDeltaNFA_NFAE#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#addTransitionPDA#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#composeDeltaPDA#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#addTransitionTuring#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#composeDeltaTuring#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#clearAddTransition#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#chooseFile1#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#chooseFile2#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#executeAction#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#clearActions#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#evaluate#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-            <element signature="n#!!block;n#clearEvaluate#0;n#!!block;n#TabPanelLogic#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Utilities/MainUtility.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="49" column="48" selection-start-line="49" selection-start-column="48" selection-end-line="49" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Utilities/AutomataGraphUtility.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="422">
@@ -816,14 +780,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/TabPanel/TabPanelRenderer.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="444" column="36" selection-start-line="444" selection-start-column="36" selection-end-line="444" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TabPanel/TabPanelLogic.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="49" column="48" selection-start-line="49" selection-start-column="48" selection-end-line="49" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Utilities/AutomataFilesUtility.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="42" column="53" selection-start-line="42" selection-start-column="53" selection-end-line="42" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GlobalAutomata.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="229">
           <caret line="124" column="19" selection-start-line="124" selection-start-column="19" selection-end-line="124" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TabPanel/TabPanelRenderer.kt">
+    <entry file="file://$PROJECT_DIR$/src/Utilities/MainUtility.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="616">
           <caret line="444" column="36" selection-start-line="444" selection-start-column="36" selection-end-line="444" selection-end-column="36" />
@@ -869,8 +854,6 @@
         <state relative-caret-position="702">
           <caret line="957" column="5" selection-start-line="957" selection-start-column="5" selection-end-line="957" selection-end-column="5" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#82#224#0" expanded="true" />
             <element signature="n#!!block;n#executeAction#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
             <element signature="n#!!block;n#actionLoadAutomata#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
             <element signature="n#!!block;n#actionConvert_NFA_DFA#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
@@ -881,12 +864,28 @@
             <element signature="n#!!block;n#actionDifference#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
             <element signature="n#!!block;n#actionComplement#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
             <element signature="n#!!block;n#actionMinimize#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+            <element signature="n#!!block;n#actionConvert_CFG_PDA#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
             <element signature="n#!!block;n#NFA_To_DFA#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
             <element signature="n#!!block;n#NFAE_To_NFA#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
             <element signature="n#!!block;n#clausura#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
             <element signature="n#!!block;n#operateTwoAutomatas#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
             <element signature="n#!!block;n#complementAutomata#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
             <element signature="n#!!block;n#minimizeAutomata#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+            <element signature="n#!!block;n#CFG_To_PDA#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Evaluation/EvaluateAutomatas.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="89" column="68" selection-start-line="89" selection-start-column="68" selection-end-line="89" selection-end-column="68" />
+          <folding>
+            <element signature="n#!!block;n#evaluate#0;n#!!block;n#EvaluateAutomatas#0" expanded="false" />
+            <element signature="n#!!block;n#evaluateDFA#0;n#!!block;n#EvaluateAutomatas#0" expanded="false" />
+            <element signature="n#!!block;n#evaluateNFA#0;n#!!block;n#EvaluateAutomatas#0" expanded="false" />
+            <element signature="n#!!block;n#evaluateNFAE#0;n#!!block;n#EvaluateAutomatas#0" expanded="false" />
+            <element signature="n#!!block;n#evaluatePDA#0;n#!!block;n#EvaluateAutomatas#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -28,7 +28,7 @@ class AutomataOperationsAndActions{
                 " - Convertir ER-NFAE" -> todo = 2.1
                 " - Convertir ER-NFA" -> todo = 2.2
                 " - Convertir ER-DFA" -> todo = 2.3
-                " - Convertir Gramatica-PDA" -> todo = 3.1
+                " - Convertir Gramatica-PDA" -> actionConvert_CFG_PDA(frame,c,panel,m)
                 " - Cargar Automata" -> actionLoadAutomata(frame,c,panel,m)
                 " - Complemento Automata" -> actionComplement(frame,c,panel,m)
                 " - Minimizacion Automata" -> actionMinimize(frame,c,panel,m)
@@ -123,6 +123,13 @@ class AutomataOperationsAndActions{
         val automataFromFile = AutomataFilesUtility().readAutomataFile(m.globalChooser1.selectedFile.absolutePath, m.globalChooser1.selectedFile.parentFile.name)
         val minimizedAutomata = minimizeAutomata(automataFromFile)
         MainUtility().renderAutomataWithoutXsAndYs(frame,c,panel,m,minimizedAutomata,m.globalChooser1.selectedFile.name.split('.').get(0)+"_MIN")
+    }
+
+    fun actionConvert_CFG_PDA(frame: JFrame, c: Container, panel: JPanel, m: GlobalAutomata){
+        val grammarAbsolutePath = m.globalChooser1.selectedFile.absolutePath
+        var grammarFromFile = AutomataFilesUtility().readGrammarFile(grammarAbsolutePath)
+        var transformedGrammarInPDA = CFG_To_PDA(grammarFromFile)
+        MainUtility().renderAutomataWithoutXsAndYs(frame,c,panel,m,transformedGrammarInPDA,m.globalChooser1.selectedFile.name.split('.').get(0)+"CFG_PDA")
     }
 
     // Logic for actions
@@ -957,4 +964,46 @@ class AutomataOperationsAndActions{
         return result
     }
 
+    fun CFG_To_PDA(g: ContextFreeGramar): GlobalAutomata{
+        var PDA = GlobalAutomata()
+
+        PDA.globalAutomataType = "PDA"
+
+        PDA.globalInitialState = "q0"
+
+        PDA.globalStates.add("q0")
+        PDA.globalStates.add("q1")
+        PDA.globalStates.add("q2")
+
+        PDA.globalAcceptanceStates.add("q2")
+
+        var pdaAlphabet = "E"
+        for(i in 0..(g.terminals.size-1)){
+            pdaAlphabet = pdaAlphabet + "," + g.terminals.get(i)
+        }
+        PDA.globalAlphabet = pdaAlphabet
+
+        var pdaPileAlphabet = pdaAlphabet + ",Z"
+        for(i in 0..(g.nonTerminals.size-1)){
+            pdaPileAlphabet = pdaPileAlphabet + "," + g.nonTerminals.get(i)
+        }
+        PDA.globalGammaAlphabet = pdaPileAlphabet
+
+        var newDelta: String
+        newDelta = "delta(q0,E,Z)=(q1,"+g.startSymbol+"Z)"
+        PDA.globalDeltas.add(newDelta)
+        newDelta = "delta(q1,E,Z)=(q2,Z)"
+        PDA.globalDeltas.add(newDelta)
+        for(i in 0..(g.productions.size-1)){
+            var productionParts = g.productions.get(i).split(',')
+            newDelta = "delta(q1,E,"+productionParts.get(0)+")=(q1,"+productionParts.get(1)+")"
+            PDA.globalDeltas.add(newDelta)
+        }
+        for(i in 0..(g.terminals.size-1)){
+            newDelta = "delta(q1,"+g.terminals.get(i)+","+g.terminals.get(i)+")=(q1,E)"
+            PDA.globalDeltas.add(newDelta)
+        }
+
+        return PDA
+    }
 }
