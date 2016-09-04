@@ -82,6 +82,53 @@ class AutomataFilesUtility{
         return content
     }
 
+    fun readGrammarFile(filePath: String): ContextFreeGramar{
+        var grammarFromFile = ContextFreeGramar()
+        val fileData = readFile(filePath)
+        val fileParts = fileData.split('$')
+
+        for(i in 0..(fileParts.size-1)){
+            var innerFileParts = fileParts.get(i).split(':')
+            var innerFilePartType = innerFileParts.get(0)
+            when(innerFilePartType){
+                "Axioma" -> {
+                    grammarFromFile.startSymbol = innerFileParts.get(1)
+                }
+                "NoTerminales" -> {
+                    if(innerFileParts.get(1).contains(',')){
+                        var tempNonTerminals = innerFileParts.get(1).split(',')
+                        for(a in 0..(tempNonTerminals.size-1)){
+                            grammarFromFile.nonTerminals.add(tempNonTerminals.get(a))
+                        }
+                    } else {
+                        grammarFromFile.nonTerminals.add(innerFileParts.get(1))
+                    }
+                }
+                "Terminales" -> {
+                    if(innerFileParts.get(1).contains(',')){
+                        var tempTerminals = innerFileParts.get(1).split(',')
+                        for(a in 0..(tempTerminals.size-1)){
+                            grammarFromFile.terminals.add(tempTerminals.get(a))
+                        }
+                    } else {
+                        grammarFromFile.terminals.add(innerFileParts.get(1))
+                    }
+                }
+                "Producciones" -> {
+                    if(innerFileParts.get(1).contains('#')){
+                        var tempProductions = innerFileParts.get(1).split('#')
+                        for(a in 0..(tempProductions.size-1)){
+                            grammarFromFile.productions.add(tempProductions.get(a))
+                        }
+                    } else {
+                        grammarFromFile.productions.add(innerFileParts.get(1))
+                    }
+                }
+            }
+        }
+        return grammarFromFile
+    }
+
     fun readAutomataFile(filePath: String, automataType: String): GlobalAutomata {
         var automataFromFile = GlobalAutomata()
         val fileData = readFile(filePath)
