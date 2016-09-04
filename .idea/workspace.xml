@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ba42790-1cde-49af-ba44-fed6ddbdd284" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProyectoTeoriaComputacion/EvaluateUtility/EvaluateAutomatas.class" afterPath="$PROJECT_DIR$/out/production/ProyectoTeoriaComputacion/EvaluateUtility/EvaluateAutomatas.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Evaluation/EvaluateAutomatas.kt" afterPath="$PROJECT_DIR$/src/Evaluation/EvaluateAutomatas.kt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GlobalAutomata.kt" afterPath="$PROJECT_DIR$/src/GlobalAutomata.kt" />
     </list>
     <ignored path="ProyectoTeoriaComputacion.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -66,12 +63,12 @@
         <option value="$PROJECT_DIR$/ArchivosGuardados/DFA/EndsIn0.DFA.txt" />
         <option value="$PROJECT_DIR$/src/Utilities/AutomataGraphUtility.kt" />
         <option value="$PROJECT_DIR$/src/Utilities/MainUtility.kt" />
-        <option value="$PROJECT_DIR$/src/Utilities/AutomataFilesUtility.kt" />
         <option value="$PROJECT_DIR$/src/TabPanel/TabPanelLogic.kt" />
-        <option value="$PROJECT_DIR$/src/OperationsAndActions/AutomataOperationsAndActions.kt" />
         <option value="$PROJECT_DIR$/src/TabPanel/TabPanelRenderer.kt" />
-        <option value="$PROJECT_DIR$/src/Evaluation/EvaluateAutomatas.kt" />
         <option value="$PROJECT_DIR$/src/GlobalAutomata.kt" />
+        <option value="$PROJECT_DIR$/src/Utilities/AutomataFilesUtility.kt" />
+        <option value="$PROJECT_DIR$/src/OperationsAndActions/AutomataOperationsAndActions.kt" />
+        <option value="$PROJECT_DIR$/src/Evaluation/EvaluateAutomatas.kt" />
       </list>
     </option>
   </component>
@@ -106,6 +103,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -124,25 +123,9 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProyectoTeoriaComputacion" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProyectoTeoriaComputacion" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -520,7 +503,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45773876" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37102085" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -570,7 +553,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="215" />
+      <option name="time" value="216" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -700,24 +683,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Utilities/MainUtility.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="49" column="48" selection-start-line="49" selection-start-column="48" selection-end-line="49" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Utilities/AutomataGraphUtility.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="422">
           <caret line="42" column="53" selection-start-line="42" selection-start-column="53" selection-end-line="42" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Utilities/AutomataFilesUtility.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="124" column="19" selection-start-line="124" selection-start-column="19" selection-end-line="124" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -728,13 +697,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/OperationsAndActions/AutomataOperationsAndActions.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-398">
-          <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/TabPanel/TabPanelLogic.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="858">
@@ -742,10 +704,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Utilities/AutomataFilesUtility.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="84" column="60" selection-start-line="84" selection-start-column="60" selection-end-line="84" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GlobalAutomata.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="35" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Utilities/MainUtility.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-212">
+          <caret line="49" column="48" selection-start-line="49" selection-start-column="48" selection-end-line="49" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OperationsAndActions/AutomataOperationsAndActions.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1078">
+          <caret line="715" column="56" selection-start-line="715" selection-start-column="56" selection-end-line="715" selection-end-column="56" />
+          <folding>
+            <element signature="n#!!block;n#executeAction#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+            <element signature="n#!!block;n#actionLoadAutomata#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+            <element signature="n#!!block;n#actionConvert_NFA_DFA#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+            <element signature="n#!!block;n#actionConvert_NFAE_NFA#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+            <element signature="n#!!block;n#actionConvert_NFAE_DFA#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+            <element signature="n#!!block;n#actionUnion#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+            <element signature="n#!!block;n#actionIntersection#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+            <element signature="n#!!block;n#actionDifference#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+            <element signature="n#!!block;n#actionComplement#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+            <element signature="n#!!block;n#actionMinimize#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+            <element signature="n#!!block;n#actionConvert_CFG_PDA#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+            <element signature="n#!!block;n#NFA_To_DFA#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+            <element signature="n#!!block;n#NFAE_To_NFA#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+            <element signature="n#!!block;n#clausura#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+            <element signature="n#!!block;n#operateTwoAutomatas#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+            <element signature="n#!!block;n#complementAutomata#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+            <element signature="n#!!block;n#minimizeAutomata#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+            <element signature="n#!!block;n#CFG_To_PDA#0;n#!!block;n#AutomataOperationsAndActions#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Evaluation/EvaluateAutomatas.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state relative-caret-position="352">
+          <caret line="89" column="68" selection-start-line="89" selection-start-column="68" selection-end-line="89" selection-end-column="68" />
           <folding>
             <element signature="n#!!block;n#evaluate#0;n#!!block;n#EvaluateAutomatas#0" expanded="false" />
             <element signature="n#!!block;n#evaluateDFA#0;n#!!block;n#EvaluateAutomatas#0" expanded="false" />
@@ -753,14 +764,6 @@
             <element signature="n#!!block;n#evaluateNFAE#0;n#!!block;n#EvaluateAutomatas#0" expanded="false" />
             <element signature="n#!!block;n#evaluatePDA#0;n#!!block;n#EvaluateAutomatas#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GlobalAutomata.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="33" column="52" selection-start-line="33" selection-start-column="52" selection-end-line="33" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>

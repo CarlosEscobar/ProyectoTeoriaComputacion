@@ -10,6 +10,13 @@ import java.util.ArrayList
 import com.mxgraph.view.mxGraph
 import javax.swing.JFileChooser
 
+class ContextFreeGramar {
+    var nonTerminals: ArrayList<String> = ArrayList<String>()
+    var terminals: ArrayList<String> = ArrayList<String>()
+    var productions: ArrayList<String> = ArrayList<String>()
+    var startSymbol: String = ""
+}
+
 class GlobalAutomata {
     var globalAutomataType: String = "DFA"
 
