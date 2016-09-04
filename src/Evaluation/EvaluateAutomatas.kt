@@ -103,17 +103,17 @@ class EvaluateAutomatas{
         statesToProcess.add(firstStateToProcess)
         tempStatesToProcess.add("dummy")
 
-        var deltaToSearch1 = ""
-        var deltaResult1 = ""
+        var deltaToSearch1: String
+        var deltaToSearch2: String
 
-        var deltaResult2 = ""
-        var deltaToSearch2 = ""
+        var deltaResult1 = ArrayList<String>()
+        var deltaResult2 = ArrayList<String>()
 
-        var newState = ""
-        var tempW = ""
-        var newW = ""
-        var deltaResultPilePart = ""
-        var newPile = ""
+        var newState: String
+        var tempW: String
+        var newW: String
+        var deltaResultPilePart: String
+        var newPile: String
 
         while(tempStatesToProcess.size > 0){
 
@@ -124,32 +124,31 @@ class EvaluateAutomatas{
                 var currentStateParts = statesToProcess.get(i).split('@')
 
                 if(!currentStateParts.get(1).equals("E")){
-                    deltaToSearch1 = "delta("+currentStateParts.get(0)+","+currentStateParts.get(1).get(0)+","+currentStateParts.get(2).get(currentStateParts.get(2).length-1)+")"
-                    deltaToSearch2 = "delta("+currentStateParts.get(0)+",E,"+currentStateParts.get(2).get(currentStateParts.get(2).length-1)+")"
+                    deltaToSearch1 = "delta("+currentStateParts.get(0)+","+currentStateParts.get(1).get(0)+","+currentStateParts.get(2).get(0)+")"
+                    deltaToSearch2 = "delta("+currentStateParts.get(0)+",E,"+currentStateParts.get(2).get(0)+")"
                 } else {
-                    deltaToSearch1 = "@dummy"
-                    deltaToSearch2 = "delta("+currentStateParts.get(0)+",E,"+currentStateParts.get(2).get(currentStateParts.get(2).length-1)+")"
+                    deltaToSearch1 = "dummy"
+                    deltaToSearch2 = "delta("+currentStateParts.get(0)+",E,"+currentStateParts.get(2).get(0)+")"
                 }
 
-                deltaResult1 = ""
-                deltaResult2 = ""
+                deltaResult1.clear()
+                deltaResult2.clear()
+
                 for(d in 0..(m.globalDeltas.size-1)){
                     if(m.globalDeltas.get(d).contains(deltaToSearch1)){
-                        deltaResult1 = m.globalDeltas.get(d).split('=').get(1)
+                        deltaResult1.add(m.globalDeltas.get(d).split('=').get(1))
                     }
                     if(m.globalDeltas.get(d).contains(deltaToSearch2)){
-                        deltaResult2 = m.globalDeltas.get(d).split('=').get(1)
+                        deltaResult2.add(m.globalDeltas.get(d).split('=').get(1))
                     }
                 }
 
-                if(deltaResult1.equals("") && deltaResult2.equals("")){
+                if(deltaResult1.size==0 && deltaResult2.size==0){
                     leafNodes.add(statesToProcess.get(i))
                 } else {
 
-                    //ver deltaResult1
-                    if(!deltaResult1.equals("")){
-
-                        newState = deltaResult1.split('(').get(1).split(',').get(0)
+                    for(p in 0..(deltaResult1.size-1)){
+                        newState = deltaResult1.get(p).split('(').get(1).split(',').get(0)
 
                         tempW = currentStateParts.get(1)
                         newW = tempW.substring(1,tempW.length)
@@ -157,40 +156,33 @@ class EvaluateAutomatas{
                             newW="E"
                         }
 
-                        //La pila queda igual
+                        //Always POP
                         newPile = currentStateParts.get(2)
+                        newPile = newPile.substring(1,newPile.length)
 
-                        deltaResultPilePart = deltaResult1.split(',').get(1).split(')').get(0)
+                        deltaResultPilePart = deltaResult1.get(p).split(',').get(1).split(')').get(0)
+                        if(!deltaResultPilePart.equals("E")){
+                            newPile = deltaResultPilePart + newPile
+                        }
 
-                        //Pop
-                        if(deltaResultPilePart.equals("E")){
-                            newPile = currentStateParts.get(2).substring(0,currentStateParts.get(2).length-1)
-                        }
-                        //Push
-                        if(deltaResultPilePart.length>1){
-                            newPile = currentStateParts.get(2) + deltaResultPilePart.get(0)
-                        }
                         tempStatesToProcess.add(newState+"@"+newW+"@"+newPile)
                     }
 
-                    if(!deltaResult2.equals("")){
-                        newState = deltaResult2.split('(').get(1).split(',').get(0)
+
+                    for(p in 0..(deltaResult2.size-1)){
+                        newState = deltaResult2.get(p).split('(').get(1).split(',').get(0)
 
                         newW = currentStateParts.get(1)
 
-                        //La pila queda igual
+                        //Always POP
                         newPile = currentStateParts.get(2)
+                        newPile = newPile.substring(1,newPile.length)
 
-                        deltaResultPilePart = deltaResult2.split(',').get(1).split(')').get(0)
+                        deltaResultPilePart = deltaResult2.get(p).split(',').get(1).split(')').get(0)
+                        if(!deltaResultPilePart.equals("E")){
+                            newPile = deltaResultPilePart + newPile
+                        }
 
-                        //Pop
-                        if(deltaResultPilePart.equals("E")){
-                            newPile = currentStateParts.get(2).substring(0,currentStateParts.get(2).length-1)
-                        }
-                        //Push
-                        if(deltaResultPilePart.length>1){
-                            newPile = currentStateParts.get(2) + deltaResultPilePart.get(0)
-                        }
                         tempStatesToProcess.add(newState+"@"+newW+"@"+newPile)
                     }
                 }
