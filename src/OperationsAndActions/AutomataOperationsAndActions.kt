@@ -122,7 +122,7 @@ class AutomataOperationsAndActions{
     fun actionMinimize(frame: JFrame, c: Container, panel: JPanel, m: GlobalAutomata){
         val automataFromFile = AutomataFilesUtility().readAutomataFile(m.globalChooser1.selectedFile.absolutePath, m.globalChooser1.selectedFile.parentFile.name)
         val minimizedAutomata = minimizeAutomata(automataFromFile)
-        MainUtility().renderAutomataWithoutXsAndYs(frame,c,panel,m,minimizedAutomata,m.globalChooser1.selectedFile.name.split('.').get(0)+"_MIN")
+        //MainUtility().renderAutomataWithoutXsAndYs(frame,c,panel,m,minimizedAutomata,m.globalChooser1.selectedFile.name.split('.').get(0)+"_MIN")
     }
 
     fun actionConvert_CFG_PDA(frame: JFrame, c: Container, panel: JPanel, m: GlobalAutomata){
@@ -703,7 +703,15 @@ class AutomataOperationsAndActions{
     }
 
     // Usa . para unir estados
-    fun minimizeAutomata(m: GlobalAutomata): GlobalAutomata{
+
+    fun minimizeAutomata(m: GlobalAutomata){
+        var accS = findAcceptanceStrings(m,"F")
+        for(i in 0..(accS.size-1)){
+            println(accS.get(i))
+        }
+    }
+
+    fun minimizeAutomata2(m: GlobalAutomata): GlobalAutomata{
         var result = GlobalAutomata()
         result.globalAlphabet = m.globalAlphabet
 
@@ -948,19 +956,81 @@ class AutomataOperationsAndActions{
         return result
     }
 
-    fun findPossiblePaths(m: GlobalAutomata, initialState: String, finalState: String): ArrayList<String>{
+    fun findAcceptanceStrings(m: GlobalAutomata, theState: String): ArrayList<String>{
         var result = ArrayList<String>()
 
-        var tempData = ArrayList<String>()
-        tempData.add(initialState)
-
-        val worstCaseLength = m.globalStates.size * 2
-        for(i in 1..(worstCaseLength)){
-
+        for(a in 0..(m.globalAcceptanceStates.size-1)){
+            if(m.globalAcceptanceStates.get(a).equals(theState)){
+                result.add(theState+"#E")
+            }
         }
 
+        var statesToProcess = ArrayList<String>()
+        statesToProcess.add(theState+"#")
 
+        var tempStates = ArrayList<String>()
+        tempStates.add("dummy")
 
+        var currentState: String
+        var currentString: String
+        var isCurrentStateAcceptance: Boolean
+
+        while(tempStates.size>0){
+            tempStates.clear()
+
+            for(i in 0..(statesToProcess.size-1)){
+                currentState = statesToProcess.get(i).split('#').get(0)
+                currentString = statesToProcess.get(i).split('#').get(1)
+
+                var productionsFromState = getProductionsForOneState(m,currentState)
+                for(p in 0..(productionsFromState.size-1)){
+                    var productionParts = productionsFromState.get(p).split('@')
+
+                    isCurrentStateAcceptance = false
+                    for(a in 0..(m.globalAcceptanceStates.size-1)){
+                        if(m.globalAcceptanceStates.get(a).equals(productionParts.get(1))){
+                            isCurrentStateAcceptance = true
+                            break
+                        }
+                    }
+
+                    if(!currentState.contains(productionParts.get(1))){
+                        if(isCurrentStateAcceptance){
+                            println(productionParts.get(1)+"#"+currentString+productionParts.get(0))
+                            result.add(currentState+productionParts.get(1)+"#"+currentString+productionParts.get(0))
+                        } else {
+                            println(productionParts.get(1)+"#"+currentString+productionParts.get(0))
+                            tempStates.add(currentState+productionParts.get(1)+"#"+currentString+productionParts.get(0))
+                        }
+                    }
+                }
+            }
+
+            statesToProcess.clear()
+            for(k in 0..(tempStates.size-1)){
+                statesToProcess.add(tempStates.get(k))
+            }
+        }
+        return result
+    }
+
+    fun getProductionsForOneState(m: GlobalAutomata, theState: String): ArrayList<String>{
+        var result = ArrayList<String>()
+        var newResult: String
+        for(d in 0..(m.globalDeltas.size-1)){
+            val currentDelta = m.globalDeltas.get(d)
+            val deltaData1 = currentDelta.split('(').get(1).split(')')
+            val deltaData2 = deltaData1.get(0).split(',')
+            val deltaData3 = deltaData1.get(1).split('=').get(1)
+
+            if(deltaData2.get(0).equals(theState)){
+                newResult = deltaData2.get(1)+"@"+deltaData3
+                if(theState.equals(deltaData3)){
+                    newResult = newResult + "@"
+                }
+                result.add(newResult)
+            }
+        }
         return result
     }
 

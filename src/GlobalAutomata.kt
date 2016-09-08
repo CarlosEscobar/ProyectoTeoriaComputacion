@@ -37,11 +37,7 @@ class GlobalAutomata {
 }
 
 fun main(args: Array<String>) {
-    //var globalAutomata = GlobalAutomata()
-    //MainUtility().renderMainFunction(globalAutomata)
-
-    val s = "123456789"
-    println(s.length)
-    println(s[s.length-1])
+    var globalAutomata = GlobalAutomata()
+    MainUtility().renderMainFunction(globalAutomata)
 }
 
