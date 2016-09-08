@@ -419,7 +419,13 @@ class TabPanelRenderer{
         t7ResultLabel.text = ""
         t7ResultLabel.setFont(t7ResultLabel.getFont().deriveFont(20.0f))
         tabPanel.add(t7ResultLabel)
-        t7ResultLabel.setBounds(150,65,200,25)
+        t7ResultLabel.setBounds(150,55,200,25)
+
+        val t7TapeLabel = JLabel()
+        t7TapeLabel.name = "t7TapeLabel"
+        t7TapeLabel.text = ""
+        tabPanel.add(t7TapeLabel)
+        t7TapeLabel.setBounds(30,85,300,25)
 
         val t7EvaluateButton = JButton("Evaluar")
         t7EvaluateButton.name = "t7EvaluateButton"
