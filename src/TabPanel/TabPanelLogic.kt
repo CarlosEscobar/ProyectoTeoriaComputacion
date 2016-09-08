@@ -481,6 +481,11 @@ class TabPanelLogic{
         if(resultLabel != null) {
             resultLabel.text = ""
         }
+
+        val tapeLabel = MainUtility().getComponentByName<JLabel>(c,"t7TapeLabel")
+        if(tapeLabel != null){
+            tapeLabel.text = ""
+        }
     }
 
     //Tab8: Ayuda

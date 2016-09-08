@@ -1,0 +1,1 @@
+Estados:q0,q1$EstadosAceptacion:q1$EstadoInicial:q0$Alfabeto:0,1$AlfabetoGamma:$delta(q0,0)=q1$delta(q1,0)=q1$delta(q0,1)=q0$delta(q1,1)=q0$XsAndYs:delta_q0_q1,380.0,250.5#delta_q0_q0,100.0,390.0#delta_q1_q1,430.0,400.0#delta_q1_q0,180.0,350.5#q0,100.0,275.0#q1,420.0,280.0
