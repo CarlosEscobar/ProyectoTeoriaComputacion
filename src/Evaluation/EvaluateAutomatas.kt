@@ -24,6 +24,18 @@ class EvaluateAutomatas{
                 "NFA" -> result = evaluateNFA(stringToEvaluate.text,m)
                 "NFA-E" -> result = evaluateNFAE(stringToEvaluate.text,m)
                 "PDA" -> result = evaluatePDA(stringToEvaluate.text,m)
+                "Maquina Turing" -> {
+                    var turingResponse = processTuringMachine(stringToEvaluate.text,m)
+
+                    val tapeLabel = MainUtility().getComponentByName<JLabel>(c,"t7TapeLabel")
+                    if(tapeLabel != null){
+                        tapeLabel.text = "Estado Final De La Cinta : " + turingResponse.get(0)
+                    }
+
+                    if(turingResponse.get(1).equals("1")){
+                        result = true
+                    }
+                }
             }
         }
 
@@ -210,6 +222,71 @@ class EvaluateAutomatas{
             }
         }
 
+        return result
+    }
+
+    fun processTuringMachine(wToEvaluate: String, m: GlobalAutomata): ArrayList<String>{
+        var result = ArrayList<String>()
+
+        var newTape = ""
+        var theTape = m.globalBlankCursor+wToEvaluate+m.globalBlankCursor
+        var iteratorPosition = 1
+        var currentState = m.globalInitialState
+
+        var continueInWhile = true
+        var deltaFound: String
+        var deltaToSearch: String
+
+        while(continueInWhile){
+            deltaFound = ""
+            if(iteratorPosition>theTape.length-1){
+                iteratorPosition = theTape.length-1
+            }
+            deltaToSearch = "delta("+currentState + "," + theTape.get(iteratorPosition) + ")"
+            for(d in 0..(m.globalDeltas.size-1)){
+                if(m.globalDeltas.get(d).contains(deltaToSearch)){
+                    deltaFound = m.globalDeltas.get(d).split('=').get(1).split('(').get(1).split(')').get(0)
+                    break
+                }
+            }
+
+            if(deltaFound != ""){
+                var deltaParts = deltaFound.split(',')
+                currentState = deltaParts.get(0)
+                newTape = updateTape(theTape,deltaParts.get(1),iteratorPosition)
+                theTape = newTape
+                if(deltaParts.get(2).equals("R")){
+                    iteratorPosition = iteratorPosition + 1
+                } else if(deltaParts.get(2).equals("L")){
+                    iteratorPosition = iteratorPosition - 1
+                }
+            } else {
+                continueInWhile = false
+            }
+        }
+
+        var isFinalStateAcceptance = "0"
+        for(i in 0..(m.globalAcceptanceStates.size-1)){
+            if(m.globalAcceptanceStates.get(i).equals(currentState)){
+                isFinalStateAcceptance = "1"
+                break
+            }
+        }
+
+        result.add(theTape)
+        result.add(isFinalStateAcceptance)
+        return result
+    }
+
+    fun updateTape(theString: String, newCharacter: String, position: Int): String{
+        var result = ""
+        if(position.equals(0)){
+            result = newCharacter + theString.substring(1,theString.length)
+        } else if(position.equals(theString.length)){
+            result = theString.substring(0,theString.length-1) + newCharacter
+        } else {
+            result = theString.substring(0,position) + newCharacter + theString.substring(position+1,theString.length)
+        }
         return result
     }
 
