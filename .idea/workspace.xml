@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9ba42790-1cde-49af-ba44-fed6ddbdd284" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProyectoTeoriaComputacion/EvaluateUtility/EvaluateAutomatas.class" afterPath="$PROJECT_DIR$/out/production/ProyectoTeoriaComputacion/EvaluateUtility/EvaluateAutomatas.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ProyectoTeoriaComputacion/OperationsAndActions/AutomataOperationsAndActions.class" afterPath="$PROJECT_DIR$/out/production/ProyectoTeoriaComputacion/OperationsAndActions/AutomataOperationsAndActions.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GlobalAutomata.kt" afterPath="$PROJECT_DIR$/src/GlobalAutomata.kt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OperationsAndActions/AutomataOperationsAndActions.kt" afterPath="$PROJECT_DIR$/src/OperationsAndActions/AutomataOperationsAndActions.kt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Evaluation/EvaluateAutomatas.kt" afterPath="$PROJECT_DIR$/src/Evaluation/EvaluateAutomatas.kt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GlobalAutomata.kt" afterPath="$PROJECT_DIR$/src/GlobalAutomata.kt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TabPanel/TabPanelLogic.kt" afterPath="$PROJECT_DIR$/src/TabPanel/TabPanelLogic.kt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TabPanel/TabPanelRenderer.kt" afterPath="$PROJECT_DIR$/src/TabPanel/TabPanelRenderer.kt" />
@@ -22,7 +20,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/ProyectoTeoriaComputacion$TheGlobalAutomata_GlobalAutomataKt.coverage" NAME="TheGlobalAutomata.GlobalAutomataKt Coverage Results" MODIFIED="1472184297930" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ProyectoTeoriaComputacion$TheGlobalAutomata_GlobalAutomataKt.coverage" NAME="TheGlobalAutomata.GlobalAutomataKt Coverage Results" MODIFIED="1472923543565" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -70,14 +68,12 @@
         <option value="$PROJECT_DIR$/ArchivosGuardados/DFA/EndsIn0.DFA.txt" />
         <option value="$PROJECT_DIR$/src/Utilities/AutomataGraphUtility.kt" />
         <option value="$PROJECT_DIR$/src/Utilities/MainUtility.kt" />
-        <option value="$PROJECT_DIR$/src/TabPanel/TabPanelLogic.kt" />
-        <option value="$PROJECT_DIR$/src/TabPanel/TabPanelRenderer.kt" />
         <option value="$PROJECT_DIR$/src/Utilities/AutomataFilesUtility.kt" />
-        <option value="$PROJECT_DIR$/src/TabPanel/TabPanelRenderer.kt" />
-        <option value="$PROJECT_DIR$/src/Evaluation/EvaluateAutomatas.kt" />
-        <option value="$PROJECT_DIR$/src/GlobalAutomata.kt" />
-        <option value="$PROJECT_DIR$/src/GlobalAutomata.kt" />
         <option value="$PROJECT_DIR$/src/OperationsAndActions/AutomataOperationsAndActions.kt" />
+        <option value="$PROJECT_DIR$/src/GlobalAutomata.kt" />
+        <option value="$PROJECT_DIR$/src/TabPanel/TabPanelRenderer.kt" />
+        <option value="$PROJECT_DIR$/src/TabPanel/TabPanelLogic.kt" />
+        <option value="$PROJECT_DIR$/src/Evaluation/EvaluateAutomatas.kt" />
       </list>
     </option>
   </component>
@@ -112,6 +108,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -134,7 +131,6 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -498,26 +494,26 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47530186" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30735457" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18495297" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18390805" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4478595" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35565314" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930845" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -564,17 +560,14 @@
     <breakpoint-manager>
       <option name="time" value="233" />
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="JetRunConfigurationType">
-        <watch expression="statesToEvaluate.get(i)" language="kotlin" />
-      </configuration>
-    </watches-manager>
+    <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/OpenWindow.kt" />
     <entry file="file://$PROJECT_DIR$/src/MainWindow.kt" />
     <entry file="file://$PROJECT_DIR$/src/OpenWindow.kt" />
     <entry file="file://$PROJECT_DIR$/src/MainWindow.kt" />
