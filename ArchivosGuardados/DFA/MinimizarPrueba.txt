@@ -1,0 +1,1 @@
+Estados:A,B,C$EstadosAceptacion:A,B,C$EstadoInicial:A$Alfabeto:0$AlfabetoGamma:$delta(A,0)=B$delta(B,0)=C$delta(C,0)=A$XsAndYs:delta_A_B,220.0,222.5#delta_B_C,370.0,310.0#delta_C_A,170.0,390.5#A,100.0,275.0#B,340.0,170.0#C,310.0,430.0

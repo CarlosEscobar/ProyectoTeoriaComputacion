@@ -55,6 +55,14 @@ class EvaluateAutomatas{
         var result = false
         var currentIteratorState = m.globalInitialState
 
+        if(wToEvaluate.length==0){
+            for(k in 0..(m.globalAcceptanceStates.size-1)){
+                if(m.globalAcceptanceStates.get(k).equals(currentIteratorState)){
+                    result = true
+                }
+            }
+        }
+
         for(i in 0..(wToEvaluate.length-1)){
 
             var iterated = false
@@ -241,6 +249,8 @@ class EvaluateAutomatas{
             deltaFound = ""
             if(iteratorPosition>theTape.length-1){
                 iteratorPosition = theTape.length-1
+            } else if(iteratorPosition<0){
+                iteratorPosition = 0
             }
             deltaToSearch = "delta("+currentState + "," + theTape.get(iteratorPosition) + ")"
             for(d in 0..(m.globalDeltas.size-1)){

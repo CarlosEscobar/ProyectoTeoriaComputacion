@@ -122,7 +122,7 @@ class AutomataOperationsAndActions{
     fun actionMinimize(frame: JFrame, c: Container, panel: JPanel, m: GlobalAutomata){
         val automataFromFile = AutomataFilesUtility().readAutomataFile(m.globalChooser1.selectedFile.absolutePath, m.globalChooser1.selectedFile.parentFile.name)
         val minimizedAutomata = minimizeAutomata(automataFromFile)
-        MainUtility().renderAutomataWithoutXsAndYs(frame,c,panel,m,minimizedAutomata,m.globalChooser1.selectedFile.name.split('.').get(0)+"_MIN")
+        //MainUtility().renderAutomataWithoutXsAndYs(frame,c,panel,m,minimizedAutomata,m.globalChooser1.selectedFile.name.split('.').get(0)+"_MIN")
     }
 
     fun actionConvert_CFG_PDA(frame: JFrame, c: Container, panel: JPanel, m: GlobalAutomata){
@@ -516,12 +516,14 @@ class AutomataOperationsAndActions{
                 var newPossibleState = ""
                 for(a in 0..(newAlphabetCharacters.size-1)){
                     newPossibleState = ""
+                    var foundDeltaInAutomata1 = false
                     if(considerAutomata1ToProcess){
                         for(d in 0..(automata1.globalDeltas.size-1)){
                             var deltaData1 = automata1.globalDeltas.get(d).split('(').get(1).split('=')
                             var deltaData2 = deltaData1.get(0).split(')').get(0).split(',')
                             if((deltaData2.get(0).equals(automata1State)) && (deltaData2.get(1).equals(newAlphabetCharacters.get(a)))){
                                 newPossibleState = deltaData1.get(1)
+                                foundDeltaInAutomata1 = true
                                 break
                             }
                         }
@@ -531,7 +533,7 @@ class AutomataOperationsAndActions{
                             var deltaData1 = automata2.globalDeltas.get(d).split('(').get(1).split('=')
                             var deltaData2 = deltaData1.get(0).split(')').get(0).split(',')
                             if((deltaData2.get(0).equals(automata2State)) && (deltaData2.get(1).equals(newAlphabetCharacters.get(a)))){
-                                if(considerAutomata1ToProcess){
+                                if(considerAutomata1ToProcess && foundDeltaInAutomata1){
                                     newPossibleState = newPossibleState + "." + deltaData1.get(1)
                                 } else {
                                     newPossibleState = deltaData1.get(1)
@@ -700,16 +702,169 @@ class AutomataOperationsAndActions{
         return result
     }
 
-    // Usa . para unir estados
-    fun minimizeAutomata(m: GlobalAutomata): GlobalAutomata{
-        var result = GlobalAutomata()
+    fun minimizeAutomata(m: GlobalAutomata){
+        var aa = findPossibleStrings(m,"C")
+        for(a in 0..(aa.size-1)){
+            println(aa.get(a))
+        }
+    }
 
-        result.globalAlphabet = m.globalAlphabet
+    fun getRecursiveStringsFromPossibleStrings(possibleStrings: ArrayList<String>): ArrayList<String>{
+        var result = ArrayList<String>()
+        return result
+    }
 
-        //Crear tabla
+    fun getAcceptanceStringsFromPossibleStrings(possibleStrings: ArrayList<String>): ArrayList<String>{
+        var result = ArrayList<String>()
+        return result
+    }
 
+    fun generateAcceptanceTestStrings(recursiveStrings: ArrayList<String>,acceptanceStrings: ArrayList<String>): ArrayList<String>{
+        var result = ArrayList<String>()
+        return result
+    }
 
+    fun findPossibleStrings(m: GlobalAutomata, theState: String): ArrayList<String>{
+        var result = ArrayList<String>()
 
+        for(a in 0..(m.globalAcceptanceStates.size-1)){
+            if(m.globalAcceptanceStates.get(a).equals(theState)){
+                result.add(theState+"#E")
+            }
+        }
+
+        var statesToProcess = ArrayList<String>()
+        statesToProcess.add(theState+"#")
+
+        var tempStates = ArrayList<String>()
+        tempStates.add("dummy")
+
+        var currentStates = ArrayList<String>()
+        currentStates.add("dummy")
+
+        var recursiveCharacters = ArrayList<String>()
+        recursiveCharacters.add("dummy")
+        var recursiveString: String
+        var nonrecursiveCharacters = ArrayList<String>()
+        nonrecursiveCharacters.add("dummy")
+
+        var currentStatesWithoutSplit: String
+        var currentState: String
+        var currentString: String
+        var newString: String
+        var numberOfAppearancesOfState: Int
+
+        while(tempStates.size>0){
+            tempStates.clear()
+
+            for(i in 0..(statesToProcess.size-1)){
+                currentStatesWithoutSplit = statesToProcess.get(i).split('#').get(0)
+                currentStates.clear()
+                if(currentStatesWithoutSplit.contains('^')){
+                    var xx = currentStatesWithoutSplit.split('^')
+                    for(x in 0..(xx.size-1)){
+                        currentStates.add(xx.get(x))
+                    }
+                    currentState = xx.get(xx.size-1)
+                } else {
+                    currentStates.add(currentStatesWithoutSplit)
+                    currentState = currentStatesWithoutSplit
+                }
+                currentString = statesToProcess.get(i).split('#').get(1)
+
+                var productionsFromState = getProductionsForOneState(m,currentState)
+                recursiveCharacters.clear()
+                nonrecursiveCharacters.clear()
+                for(w in 0..(productionsFromState.size-1)){
+                    if(productionsFromState.get(w).contains('*')){
+                        recursiveCharacters.add(productionsFromState.get(w).split('@').get(0).split('*').get(0))
+                    } else {
+                        nonrecursiveCharacters.add(productionsFromState.get(w))
+                    }
+                }
+
+                numberOfAppearancesOfState = 0
+                for(q in 0..(currentStates.size-1)){
+                    if(currentStates.get(q).equals(currentState)){
+                        numberOfAppearancesOfState++
+                    }
+                }
+
+                if(numberOfAppearancesOfState>1){
+                    if(recursiveCharacters.size>0){
+                        if(recursiveCharacters.size==1){
+                            recursiveString = "("+recursiveCharacters.get(0)+")*"
+                        } else {
+                            recursiveString = "(" + recursiveCharacters.get(0)
+                            for(t in 1..(recursiveCharacters.size-1)){
+                                recursiveString = recursiveString + "+" + recursiveCharacters.get(t)
+                            }
+                            recursiveString = recursiveString + ")*"
+                        }
+                        result.add(currentStatesWithoutSplit+"#"+currentString+"%"+recursiveString)
+                    } else {
+                        result.add(currentStatesWithoutSplit+"#"+currentString)
+                    }
+                } else {
+                    if(recursiveCharacters.size>0){
+                        if(recursiveCharacters.size==1){
+                            recursiveString = "("+recursiveCharacters.get(0)+")*"
+                        } else {
+                            recursiveString = "(" + recursiveCharacters.get(0)
+                            for(t in 1..(recursiveCharacters.size-1)){
+                                recursiveString = recursiveString + "+" + recursiveCharacters.get(t)
+                            }
+                            recursiveString = recursiveString + ")*"
+                        }
+
+                        for(p in 0..(nonrecursiveCharacters.size-1)){
+                            var productionParts = nonrecursiveCharacters.get(p).split('@')
+                            if(currentString.equals("")){
+                                newString = recursiveString+productionParts.get(0)
+                            } else {
+                                newString = currentString+"%"+recursiveString+productionParts.get(0)
+                            }
+                            tempStates.add(currentStatesWithoutSplit+"^"+productionParts.get(1)+"#"+newString)
+                        }
+                    } else {
+                        for(p in 0..(productionsFromState.size-1)){
+                            var productionParts = productionsFromState.get(p).split('@')
+                            if(currentString.equals("")){
+                                newString = productionParts.get(0)
+                            } else {
+                                newString = currentString+"%"+productionParts.get(0)
+                            }
+                            tempStates.add(currentStatesWithoutSplit+"^"+productionParts.get(1)+"#"+newString)
+                        }
+                    }
+                }
+            }
+
+            statesToProcess.clear()
+            for(k in 0..(tempStates.size-1)){
+                statesToProcess.add(tempStates.get(k))
+            }
+        }
+        return result
+    }
+
+    fun getProductionsForOneState(m: GlobalAutomata, theState: String): ArrayList<String>{
+        var result = ArrayList<String>()
+        var newResult: String
+        for(d in 0..(m.globalDeltas.size-1)){
+            val currentDelta = m.globalDeltas.get(d)
+            val deltaData1 = currentDelta.split('(').get(1).split(')')
+            val deltaData2 = deltaData1.get(0).split(',')
+            val deltaData3 = deltaData1.get(1).split('=').get(1)
+
+            if(deltaData2.get(0).equals(theState)){
+                newResult = deltaData2.get(1)+"@"+deltaData3
+                if(theState.equals(deltaData3)){
+                    newResult = deltaData2.get(1)+"*@"+deltaData3
+                }
+                result.add(newResult)
+            }
+        }
         return result
     }
 
