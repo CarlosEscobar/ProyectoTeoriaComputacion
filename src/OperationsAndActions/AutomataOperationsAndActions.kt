@@ -7,6 +7,7 @@ package OperationsAndActions
 import FilesUtility.*
 import TheGlobalAutomata.*
 import MainWindowUtility.*
+import jdk.nashorn.internal.objects.Global
 
 import java.awt.Container
 import javax.swing.*
@@ -25,9 +26,9 @@ class AutomataOperationsAndActions{
                 " - Convertir NFAE-NFA" -> actionConvert_NFAE_NFA(frame,c,panel,m)
                 " - Convertir NFAE-DFA" -> actionConvert_NFAE_DFA(frame,c,panel,m)
                 " - Convertir NFAE-ER" -> todo = 1.3
-                " - Convertir ER-NFAE" -> todo = 2.1
-                " - Convertir ER-NFA" -> todo = 2.2
-                " - Convertir ER-DFA" -> todo = 2.3
+                " - Convertir ER-NFAE" -> actionConvert_ER_NFAE(frame,c,panel,m)
+                " - Convertir ER-NFA" -> actionConvert_ER_NFA(frame,c,panel,m)
+                " - Convertir ER-DFA" -> actionConvert_ER_DFA(frame,c,panel,m)
                 " - Convertir Gramatica-PDA" -> actionConvert_CFG_PDA(frame,c,panel,m)
                 " - Cargar Automata" -> actionLoadAutomata(frame,c,panel,m)
                 " - Complemento Automata" -> actionComplement(frame,c,panel,m)
@@ -123,6 +124,27 @@ class AutomataOperationsAndActions{
         val automataFromFile = AutomataFilesUtility().readAutomataFile(m.globalChooser1.selectedFile.absolutePath, m.globalChooser1.selectedFile.parentFile.name)
         val minimizedAutomata = minimizeAutomata(automataFromFile)
         //MainUtility().renderAutomataWithoutXsAndYs(frame,c,panel,m,minimizedAutomata,m.globalChooser1.selectedFile.name.split('.').get(0)+"_MIN")
+    }
+
+    fun actionConvert_ER_NFAE(frame: JFrame, c: Container, panel: JPanel, m: GlobalAutomata){
+        val ERfromFile = AutomataFilesUtility().readFile(m.globalChooser1.selectedFile.absolutePath)
+        val transformedAutomata = ER_To_NFAE(ERfromFile)
+        MainUtility().renderAutomataWithoutXsAndYs(frame,c,panel,m,transformedAutomata,m.globalChooser1.selectedFile.name.split('.').get(0)+"ER_NFAE")
+    }
+
+    fun actionConvert_ER_NFA(frame: JFrame, c: Container, panel: JPanel, m: GlobalAutomata){
+        val ERfromFile = AutomataFilesUtility().readFile(m.globalChooser1.selectedFile.absolutePath)
+        val NFAEautomata = ER_To_NFAE(ERfromFile)
+        val NFAautomata = NFAE_To_NFA(NFAEautomata)
+        MainUtility().renderAutomataWithoutXsAndYs(frame,c,panel,m,NFAautomata,m.globalChooser1.selectedFile.name.split('.').get(0)+"ER_NFA")
+    }
+
+    fun actionConvert_ER_DFA(frame: JFrame, c: Container, panel: JPanel, m: GlobalAutomata){
+        val ERfromFile = AutomataFilesUtility().readFile(m.globalChooser1.selectedFile.absolutePath)
+        val NFAEautomata = ER_To_NFAE(ERfromFile)
+        val NFAautomata = NFAE_To_NFA(NFAEautomata)
+        val DFAautomata = NFA_To_DFA(NFAautomata)
+        MainUtility().renderAutomataWithoutXsAndYs(frame,c,panel,m,DFAautomata,m.globalChooser1.selectedFile.name.split('.').get(0)+"ER_DFA")
     }
 
     fun actionConvert_CFG_PDA(frame: JFrame, c: Container, panel: JPanel, m: GlobalAutomata){
@@ -868,6 +890,11 @@ class AutomataOperationsAndActions{
         return result
     }
 
+    fun ER_To_NFAE(erString: String): GlobalAutomata{
+        var NFAE = GlobalAutomata()
+        return NFAE
+    }
+
     fun CFG_To_PDA(g: ContextFreeGramar): GlobalAutomata{
         var PDA = GlobalAutomata()
 
@@ -910,4 +937,5 @@ class AutomataOperationsAndActions{
 
         return PDA
     }
+
 }
