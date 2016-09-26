@@ -7,10 +7,12 @@ package OperationsAndActions
 import FilesUtility.*
 import TheGlobalAutomata.*
 import MainWindowUtility.*
+import RegExTreeBuilder.TreeDefinition.*
 
 import java.awt.Container
 import javax.swing.*
 import java.util.*
+import kotlin.reflect.KMutableProperty
 
 class AutomataOperationsAndActions{
 
@@ -25,9 +27,9 @@ class AutomataOperationsAndActions{
                 " - Convertir NFAE-NFA" -> actionConvert_NFAE_NFA(frame,c,panel,m)
                 " - Convertir NFAE-DFA" -> actionConvert_NFAE_DFA(frame,c,panel,m)
                 " - Convertir NFAE-ER" -> todo = 1.3
-                " - Convertir ER-NFAE" -> todo = 2.1
-                " - Convertir ER-NFA" -> todo = 2.2
-                " - Convertir ER-DFA" -> todo = 2.3
+                " - Convertir ER-NFAE" -> actionConvert_ER_NFAE(frame,c,panel,m)
+                " - Convertir ER-NFA" -> actionConvert_ER_NFA(frame,c,panel,m)
+                " - Convertir ER-DFA" -> actionConvert_ER_DFA(frame,c,panel,m)
                 " - Convertir Gramatica-PDA" -> actionConvert_CFG_PDA(frame,c,panel,m)
                 " - Cargar Automata" -> actionLoadAutomata(frame,c,panel,m)
                 " - Complemento Automata" -> actionComplement(frame,c,panel,m)
@@ -123,6 +125,27 @@ class AutomataOperationsAndActions{
         val automataFromFile = AutomataFilesUtility().readAutomataFile(m.globalChooser1.selectedFile.absolutePath, m.globalChooser1.selectedFile.parentFile.name)
         val minimizedAutomata = minimizeAutomata(automataFromFile)
         //MainUtility().renderAutomataWithoutXsAndYs(frame,c,panel,m,minimizedAutomata,m.globalChooser1.selectedFile.name.split('.').get(0)+"_MIN")
+    }
+
+    fun actionConvert_ER_NFAE(frame: JFrame, c: Container, panel: JPanel, m: GlobalAutomata){
+        val ERfromFile = AutomataFilesUtility().readFile(m.globalChooser1.selectedFile.absolutePath).trim()
+        val transformedAutomata = ER_To_NFAE(ERfromFile)
+        MainUtility().renderAutomataWithoutXsAndYs(frame,c,panel,m,transformedAutomata,m.globalChooser1.selectedFile.name.split('.').get(0)+"_ER_NFAE")
+    }
+
+    fun actionConvert_ER_NFA(frame: JFrame, c: Container, panel: JPanel, m: GlobalAutomata){
+        val ERfromFile = AutomataFilesUtility().readFile(m.globalChooser1.selectedFile.absolutePath).trim()
+        val NFAEautomata = ER_To_NFAE(ERfromFile)
+        val NFAautomata = NFAE_To_NFA(NFAEautomata)
+        MainUtility().renderAutomataWithoutXsAndYs(frame,c,panel,m,NFAautomata,m.globalChooser1.selectedFile.name.split('.').get(0)+"_ER_NFA")
+    }
+
+    fun actionConvert_ER_DFA(frame: JFrame, c: Container, panel: JPanel, m: GlobalAutomata){
+        val ERfromFile = AutomataFilesUtility().readFile(m.globalChooser1.selectedFile.absolutePath).trim()
+        val NFAEautomata = ER_To_NFAE(ERfromFile)
+        val NFAautomata = NFAE_To_NFA(NFAEautomata)
+        val DFAautomata = NFA_To_DFA(NFAautomata)
+        MainUtility().renderAutomataWithoutXsAndYs(frame,c,panel,m,DFAautomata,m.globalChooser1.selectedFile.name.split('.').get(0)+"_ER_DFA")
     }
 
     fun actionConvert_CFG_PDA(frame: JFrame, c: Container, panel: JPanel, m: GlobalAutomata){
@@ -868,6 +891,247 @@ class AutomataOperationsAndActions{
         return result
     }
 
+    fun ER_To_NFAE(erString: String): GlobalAutomata{
+        var NFAE = GlobalAutomata()
+        NFAE.globalAutomataType = "NFA-E"
+
+        var theAlphabet = ""
+        for(i in 0..(erString.length-1)){
+            if((!erString.get(i).equals('(')) &&
+                    (!erString.get(i).equals(')')) &&
+                    (!erString.get(i).equals('*')) &&
+                    (!erString.get(i).equals('+')) &&
+                    (!erString.get(i).equals('.'))){
+                if(!theAlphabet.contains(erString.get(i))){
+                    if(theAlphabet.equals("")){
+                        theAlphabet = erString.get(i).toString()
+                    } else {
+                        theAlphabet = theAlphabet + "," + erString.get(i).toString()
+                    }
+                }
+            }
+        }
+
+        var regExTree_RootNode = RegExTreeBuilder.RegExTreeBuilder().BuildRegExTree(erString)
+
+        if(regExTree_RootNode.javaClass.name.split('.').get(2).equals("CharNode")){
+            var theChar = printTree(regExTree_RootNode)
+            //*****Construct NFAE**********
+            //Construct NFAE for c
+            NFAE.globalAlphabet = theAlphabet
+            var statesCounter = 0
+            var resultOperationChar = ER_operateChar(NFAE,theChar,statesCounter).split('@')
+            NFAE.globalInitialState = resultOperationChar.get(0)
+            NFAE.globalAcceptanceStates.add(resultOperationChar.get(1))
+        } else if((regExTree_RootNode.javaClass.name.split('.').get(2).equals("RepeatNode")) &&
+                ((regExTree_RootNode as RepeatNode).node.javaClass.name.split('.').get(2).equals("CharNode"))) {
+            var repeatedChar = printTree(regExTree_RootNode.node)
+            //*****Construct NFAE**********
+            // Construct NFAE for c*
+            NFAE.globalAlphabet = theAlphabet + ",E"
+            var statesCounter = 0
+            var resultOperationChar = ER_operateChar(NFAE,repeatedChar,statesCounter).split('@')
+            statesCounter = resultOperationChar.get(2).toInt()
+            var resultOperationKleene = ER_operateKleene(NFAE,resultOperationChar.get(0),resultOperationChar.get(1),statesCounter).split('@')
+            NFAE.globalInitialState = resultOperationKleene.get(0)
+            NFAE.globalAcceptanceStates.add(resultOperationKleene.get(1))
+        } else {
+            //*****Construct NFAE**********
+            // Construct NFAE for ER
+            NFAE.globalAlphabet = theAlphabet + ",E"
+
+            var globalNumberOfStates = 0
+
+            var erTreeString = printTree(regExTree_RootNode)
+            var erPartsToProcess = ArrayList<String>()
+            var erTreeStringPos = 0
+            while(erTreeStringPos < erTreeString.length){
+                if(erTreeString.get(erTreeStringPos).equals('*')){
+                    erPartsToProcess.add(erTreeString.get(erTreeStringPos).toString()+erTreeString.get(erTreeStringPos+1).toString())
+                    erTreeStringPos++
+                    erTreeStringPos++
+                } else {
+                    erPartsToProcess.add(erTreeString.get(erTreeStringPos).toString())
+                    erTreeStringPos++
+                }
+            }
+
+            var erTempParts = ArrayList<String>()
+            erTempParts.add("dummy1")
+            erTempParts.add("dummy2")
+            var partsToProcessPos = 0
+
+            var currentPart = ""
+            var currentPartOneAhead = ""
+            var currentPartTwoAhead = ""
+            var isPartOneAheadBondable = 0
+            var isPartTwoAheadBondable = 0
+
+            var partOneResultString = ""
+            var partTwoResultString = ""
+            var operatorResultString = ""
+
+            while(erTempParts.size>1){
+                erTempParts.clear()
+
+                partsToProcessPos = 0
+                while(partsToProcessPos < erPartsToProcess.size){
+
+                    currentPart = erPartsToProcess.get(partsToProcessPos)
+                    currentPartOneAhead = erPartsToProcess.get(partsToProcessPos+1)
+                    currentPartTwoAhead = erPartsToProcess.get(partsToProcessPos+2)
+                    isPartOneAheadBondable = 0
+                    isPartTwoAheadBondable = 0
+
+                    if(currentPartOneAhead.contains('@')){
+                        isPartOneAheadBondable = 1
+                    } else if((!currentPartOneAhead.get(currentPartOneAhead.length-1).equals('+')) && (!currentPartOneAhead.get(currentPartOneAhead.length-1).equals('.'))){
+                        isPartOneAheadBondable = 2
+                    }
+
+                    if(currentPartTwoAhead.contains('@')){
+                        isPartTwoAheadBondable = 1
+                    } else if((!currentPartTwoAhead.get(currentPartTwoAhead.length-1).equals('+')) && (!currentPartTwoAhead.get(currentPartTwoAhead.length-1).equals('.'))){
+                        isPartTwoAheadBondable = 2
+                    }
+
+                    if((isPartOneAheadBondable>0) && (isPartTwoAheadBondable>0)){
+
+                        partOneResultString = ""
+                        partTwoResultString = ""
+
+                        if(isPartOneAheadBondable==1){
+                            partOneResultString = currentPartOneAhead
+                        } else if(isPartOneAheadBondable==2){
+                            partOneResultString = ER_operateChar(NFAE,currentPartOneAhead.get(currentPartOneAhead.length-1).toString(),globalNumberOfStates)
+                            globalNumberOfStates = partOneResultString.split('@').get(2).toInt()
+                            if(currentPartOneAhead.get(0).equals('*')){
+                                partOneResultString = ER_operateKleene(NFAE,partOneResultString.split('@').get(0),partOneResultString.split('@').get(1),globalNumberOfStates)
+                                globalNumberOfStates = partOneResultString.split('@').get(2).toInt()
+                            }
+                        }
+
+                        if(isPartTwoAheadBondable==1){
+                            partTwoResultString = currentPartTwoAhead
+                        } else if(isPartTwoAheadBondable==2){
+                            partTwoResultString = ER_operateChar(NFAE,currentPartTwoAhead.get(currentPartTwoAhead.length-1).toString(),globalNumberOfStates)
+                            globalNumberOfStates = partTwoResultString.split('@').get(2).toInt()
+                            if(currentPartTwoAhead.get(0).equals('*')){
+                                partTwoResultString = ER_operateKleene(NFAE,partTwoResultString.split('@').get(0),partTwoResultString.split('@').get(1),globalNumberOfStates)
+                                globalNumberOfStates = partTwoResultString.split('@').get(2).toInt()
+                            }
+                        }
+
+                        operatorResultString = ""
+                        if(currentPart.contains('+')){
+                            operatorResultString = ER_operateOR(NFAE,partOneResultString.split('@').get(0),partOneResultString.split('@').get(1),partTwoResultString.split('@').get(0),partTwoResultString.split('@').get(1),globalNumberOfStates)
+                            globalNumberOfStates = operatorResultString.split('@').get(2).toInt()
+                        } else if(currentPart.contains('.')){
+                            operatorResultString = ER_operateAnd(NFAE,partOneResultString.split('@').get(0),partOneResultString.split('@').get(1),partTwoResultString.split('@').get(0),partTwoResultString.split('@').get(1))
+                        }
+
+                        if(currentPart.contains('*')){
+                            operatorResultString = ER_operateKleene(NFAE,operatorResultString.split('@').get(0),operatorResultString.split('@').get(1),globalNumberOfStates)
+                            globalNumberOfStates = operatorResultString.split('@').get(2).toInt()
+                        }
+
+                        erTempParts.add(operatorResultString.split('@').get(0)+"@"+operatorResultString.split('@').get(1))
+                        partsToProcessPos++
+                        partsToProcessPos++
+                        partsToProcessPos++
+                    } else {
+                        erTempParts.add(currentPart)
+                        partsToProcessPos++
+                    }
+                }
+
+                erPartsToProcess.clear()
+                for(i in 0..(erTempParts.size-1)){
+                    erPartsToProcess.add(erTempParts.get(i))
+                }
+            }
+            NFAE.globalInitialState = erPartsToProcess.get(0).split('@').get(0)
+            NFAE.globalAcceptanceStates.add(erPartsToProcess.get(0).split('@').get(1))
+        }
+        return NFAE
+    }
+
+    fun printTree(rootNode: Any): String{
+        if(rootNode.javaClass.name.split('.').get(2).equals("ORNode")){
+            rootNode as ORNode
+            return "+" + printTree(rootNode.LeftNode) + printTree(rootNode.RightNode)
+        } else if(rootNode.javaClass.name.split('.').get(2).equals("RepeatNode")){
+            rootNode as RepeatNode
+            return "*" + printTree(rootNode.node)
+        } else if(rootNode.javaClass.name.split('.').get(2).equals("ANDNode")){
+            rootNode as ANDNode
+            return "." + printTree(rootNode.LeftNode) + printTree(rootNode.RightNode)
+        }  else{
+            rootNode as CharNode
+            return rootNode.inverseExpression()
+        }
+    }
+
+    fun ER_operateChar(m: GlobalAutomata, char: String, currentCounter: Int): String{
+        var currentNumberOfStates = currentCounter
+        val firstState = "q"+currentNumberOfStates.toString()
+        currentNumberOfStates++
+        val secondState = "q"+currentNumberOfStates.toString()
+        currentNumberOfStates++
+
+        m.globalStates.add(firstState)
+        m.globalStates.add(secondState)
+
+        m.globalDeltas.add("delta("+firstState+","+char+")="+secondState)
+
+        var result = firstState+"@"+secondState+"@"+currentNumberOfStates.toString()
+        return result
+    }
+
+    fun ER_operateKleene(m: GlobalAutomata, initialState: String, finalState: String, currentCounter: Int): String{
+        var currentNumberOfStates = currentCounter
+        val firstState = "q"+currentNumberOfStates.toString()
+        currentNumberOfStates++
+        val secondState = "q"+currentNumberOfStates.toString()
+        currentNumberOfStates++
+
+        m.globalStates.add(firstState)
+        m.globalStates.add(secondState)
+
+        m.globalDeltas.add("delta("+firstState+",E)="+initialState)
+        m.globalDeltas.add("delta("+firstState+",E)="+secondState)
+        m.globalDeltas.add("delta("+finalState+",E)="+initialState)
+        m.globalDeltas.add("delta("+finalState+",E)="+secondState)
+
+        var result = firstState+"@"+secondState+"@"+currentNumberOfStates.toString()
+        return result
+    }
+
+    fun ER_operateAnd(m: GlobalAutomata, initialStateLeft: String, finalStateLeft: String, initialStateRight: String, finalStateRight: String): String {
+        m.globalDeltas.add("delta("+finalStateLeft+",E)="+initialStateRight)
+        var result = initialStateLeft+"@"+finalStateRight
+        return result
+    }
+
+    fun ER_operateOR(m:GlobalAutomata, initialStateLeft: String, finalStateLeft: String, initialStateRight: String, finalStateRight: String, currentCounter: Int): String {
+        var currentNumberOfStates = currentCounter
+        val firstState = "q"+currentNumberOfStates.toString()
+        currentNumberOfStates++
+        val secondState = "q"+currentNumberOfStates.toString()
+        currentNumberOfStates++
+
+        m.globalStates.add(firstState)
+        m.globalStates.add(secondState)
+
+        m.globalDeltas.add("delta("+firstState+",E)="+initialStateLeft)
+        m.globalDeltas.add("delta("+firstState+",E)="+initialStateRight)
+        m.globalDeltas.add("delta("+finalStateLeft+",E)="+secondState)
+        m.globalDeltas.add("delta("+finalStateRight+",E)="+secondState)
+
+        var result = firstState+"@"+secondState+"@"+currentNumberOfStates.toString()
+        return result
+    }
+
     fun CFG_To_PDA(g: ContextFreeGramar): GlobalAutomata{
         var PDA = GlobalAutomata()
 
@@ -910,4 +1174,5 @@ class AutomataOperationsAndActions{
 
         return PDA
     }
+
 }
