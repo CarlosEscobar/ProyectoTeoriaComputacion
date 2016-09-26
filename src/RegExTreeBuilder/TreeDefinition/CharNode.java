@@ -4,7 +4,7 @@ package RegExTreeBuilder.TreeDefinition;
  * Created by furan on 5/12/15.
  */
 public class CharNode extends Node {
-    private String value;
+    public String value;
 
     public String getValue() {
         return value;

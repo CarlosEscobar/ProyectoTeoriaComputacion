@@ -4,8 +4,8 @@ package RegExTreeBuilder.TreeDefinition;
  * Created by furan on 5/12/15.
  */
 public class ANDNode extends Node {
-    private Node LeftNode;
-    private Node RightNode;
+    public Node LeftNode;
+    public Node RightNode;
 
     public Node getLeftNode() {
         return LeftNode;

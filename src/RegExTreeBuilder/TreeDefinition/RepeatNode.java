@@ -4,7 +4,7 @@ package RegExTreeBuilder.TreeDefinition;
  * Created by furan on 5/12/15.
  */
 public class RepeatNode extends Node {
-    private Node node;
+    public Node node;
 
     public Node getNode() {
         return node;

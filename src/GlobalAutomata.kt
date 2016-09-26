@@ -10,9 +10,6 @@ import java.util.ArrayList
 import com.mxgraph.view.mxGraph
 import javax.swing.JFileChooser
 
-import RegExTreeBuilder.TreeBuilder.*
-import RegExTreeBuilder.TreeDefinition.*
-
 class ContextFreeGramar {
     var nonTerminals: ArrayList<String> = ArrayList<String>()
     var terminals: ArrayList<String> = ArrayList<String>()
@@ -40,26 +37,8 @@ class GlobalAutomata {
 }
 
 fun main(args: Array<String>) {
-    //var globalAutomata = GlobalAutomata()
-    //MainUtility().renderMainFunction(globalAutomata)
-
-    val regExParser = RegularExpressionTreeBuilder()
-
-    var o:Any
-
-    o = regExParser.Parse("0") as CharNode
-
-    o = regExParser.Parse("(0)*") as RepeatNode
-
-    o = regExParser.Parse("(0+1)*") as RepeatNode
-
-    o = regExParser.Parse("(0.1)") as ANDNode
-
-    o = regExParser.Parse("((0+1).(0+1))") as ANDNode
-
-    o = regExParser.Parse("(((0+1)*).(0+1))") as ANDNode
-
-    println("Hello, world!")
+    var globalAutomata = GlobalAutomata()
+    MainUtility().renderMainFunction(globalAutomata)
 }
 
 
