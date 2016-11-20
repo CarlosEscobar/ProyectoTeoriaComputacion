@@ -726,7 +726,8 @@ class AutomataOperationsAndActions{
     }
 
     fun minimizeAutomata(m: GlobalAutomata){
-        var aa = findPossibleStrings(m,"C")
+        var ax = findPossibleStrings(m,"C")
+        var aa = getRecursiveStringsFromPossibleStrings(ax)
         for(a in 0..(aa.size-1)){
             println(aa.get(a))
         }
@@ -734,6 +735,45 @@ class AutomataOperationsAndActions{
 
     fun getRecursiveStringsFromPossibleStrings(possibleStrings: ArrayList<String>): ArrayList<String>{
         var result = ArrayList<String>()
+
+        var newRecursive = ""
+        for(p in 0..(possibleStrings.size-1)){
+            var innerPossibleParts = possibleStrings.get(p).split('#')
+            if(!innerPossibleParts.get(1).equals('E')) {
+                var innerStates = innerPossibleParts.get(0).split('^')
+                var innerTransitions = innerPossibleParts.get(1).split('%')
+
+                newRecursive = ""
+
+                if (innerStates.get(0).equals(innerStates.get(innerStates.size - 1))) {
+                    newRecursive = "("
+                    for (i in 0..(innerTransitions.size - 1)) {
+                        newRecursive = newRecursive + innerTransitions.get(i)
+                    }
+                    newRecursive = newRecursive + ")*"
+                } else {
+                    var lastState = innerStates.get(innerStates.size - 1)
+                    var statePos = 0
+                    for (i in 0..(innerStates.size - 1)) {
+                        if (innerStates.get(i).equals(lastState)) {
+                            statePos = i
+                            break
+                        }
+                    }
+                    statePos--
+                    for (j in 0..(statePos)) {
+                        newRecursive = newRecursive + innerTransitions.get(j)
+                    }
+                    statePos++
+                    newRecursive = newRecursive + "("
+                    for (j in statePos..(innerTransitions.size - 1)) {
+                        newRecursive = newRecursive + innerTransitions.get(j)
+                    }
+                    newRecursive = newRecursive + ")*"
+                }
+                result.add(newRecursive)
+            }
+        }
         return result
     }
 
@@ -1158,17 +1198,17 @@ class AutomataOperationsAndActions{
         PDA.globalGammaAlphabet = pdaPileAlphabet
 
         var newDelta: String
-        newDelta = "delta(q0,E,Z)=(q1,"+g.startSymbol+"Z)"
+        newDelta = "delta(q0,E,Z)=(q1,"+g.startSymbol+"Z]"
         PDA.globalDeltas.add(newDelta)
-        newDelta = "delta(q1,E,Z)=(q2,Z)"
+        newDelta = "delta(q1,E,Z]=[q2,Z]"
         PDA.globalDeltas.add(newDelta)
         for(i in 0..(g.productions.size-1)){
             var productionParts = g.productions.get(i).split(',')
-            newDelta = "delta(q1,E,"+productionParts.get(0)+")=(q1,"+productionParts.get(1)+")"
+            newDelta = "delta[q1,E,"+productionParts.get(0)+"]=[q1,"+productionParts.get(1)+"]"
             PDA.globalDeltas.add(newDelta)
         }
         for(i in 0..(g.terminals.size-1)){
-            newDelta = "delta(q1,"+g.terminals.get(i)+","+g.terminals.get(i)+")=(q1,E)"
+            newDelta = "delta[q1,"+g.terminals.get(i)+","+g.terminals.get(i)+"]=[q1,E]"
             PDA.globalDeltas.add(newDelta)
         }
 

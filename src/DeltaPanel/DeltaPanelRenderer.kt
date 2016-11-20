@@ -163,13 +163,13 @@ class DeltaPanelRenderer{
         for(i in 0..(m.globalDeltas.size-1)){
             val deltaData = m.globalDeltas.get(i)
             val delta1 = deltaData.split('=')
-            val delta2 = delta1.get(0).split('(').get(1).split(',')
+            val delta2 = delta1.get(0).split('[').get(1).split(',')
             val delta3 = delta1.get(1).split(',')
             val firstState =  delta2.get(0)
             val lastState = delta3.get(0).split('(').get(1)
 
             if((firstState.equals(initialState)) && (lastState.equals(finalState))){
-                val transitionText = delta2.get(1) + "," + delta2.get(2).split(')').get(0) + "/" + delta3.get(1).split(')').get(0)
+                val transitionText = delta2.get(1) + "," + delta2.get(2).split(']').get(0) + "/" + delta3.get(1).split(']').get(0)
                 result.add(transitionText)
             }
         }

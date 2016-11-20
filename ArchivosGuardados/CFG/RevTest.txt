@@ -1,0 +1,1 @@
+Axioma:S$NoTerminales:S$Terminales:(,)$Producciones:S,(S)S#S,()
